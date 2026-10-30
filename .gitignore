@@ -1,0 +1,10 @@
+.DS_Store
+*.dmg
+*.inspect.ndjson
+.~lock.*
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.build/
+.swiftpm/
+Archivo/Fase_III_Finanzas_Porcinas_ORIGINAL_*.docx
