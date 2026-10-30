@@ -167,6 +167,21 @@ def CAP(text):
     return p
 
 
+def IMG(rel, width_in):
+    p = copy.deepcopy(BODY_T)
+    strip_runs(p)
+    pPr = p.find(q('pPr'))
+    for j in pPr.findall(q('jc')):
+        pPr.remove(j)
+    jc = OxmlElement('w:jc')
+    jc.set(q('val'), 'center')
+    pPr.append(jc)
+    para = Paragraph(p, doc)
+    r = para.add_run()
+    r.add_picture(str(BASE / rel), width=Inches(width_in))
+    return p
+
+
 def CODE(line):
     p = OxmlElement('w:p')
     pPr = OxmlElement('w:pPr')
@@ -335,6 +350,8 @@ def build(items):
             out.append(TABLE(it[1], it[2]))
         elif k == 'code':
             out.extend(CODE(line) for line in it[1])
+        elif k == 'img':
+            out.append(IMG(it[1], it[2]))
         else:
             raise ValueError(k)
     for i, e in enumerate(out):
@@ -736,6 +753,72 @@ insert_after(tbl_app, build([
     ('p', 'El entregable de esta fase es la App completa y funcional: los seis módulos integrados en una sola aplicación, con los componentes de cada pantalla conectados a los datos y al servicio local, y con la identidad gráfica del criadero.'),
 ]))
 
+# ---- figuras con justificacion por fase ----
+# Fase I: captura del listado de requerimientos
+insert_before(find_par('5.5 Entregable de la fase', 'Heading 2')._p, build([
+    ('img', 'Entregables/Capturas/Requerimientos_Listado_p1.png', 5.2),
+    ('cap', 'Figura 0. Primera página del listado de requerimientos entregado (02_Listado_de_Requerimientos.docx).'),
+    ('p', 'Justificación: esta captura es la evidencia del entregable de la fase; muestra que cada requerimiento queda registrado con su prioridad, su complejidad y su estado, para que el listado sea auditable por la titular del criadero.'),
+]))
+
+# Fase II: diagrama de navegacion + referencia a la justificacion del cambio de diseno
+insert_before(find_par('6.5 Requerimientos de diseño', 'Heading 2')._p, build([
+    ('img', 'Entregables/Capturas/Diagrama_Navegacion.png', 6.2),
+    ('cap', 'Figura 0. Diagrama de navegación de la aplicación.'),
+    ('p', 'Justificación: el diagrama resume las transiciones de la sección anterior e indica, en cada caso, la entrada y la salida; sirve de plano para construir cada pantalla en la Fase III.'),
+]))
+insert_before(find_par('6.7 Entregable de la fase', 'Heading 2')._p, build([
+    ('p', 'El diseño se iteró tres veces por indicación del cliente; la justificación de cada cambio y las capturas de las iteraciones se documentan en el capítulo 10, una vez terminadas las cinco fases.'),
+]))
+
+# Fase III: codigo publicado en GitHub
+insert_before(find_par('7.4 Entregable de la fase', 'Heading 2')._p, build([
+    ('sub', 'Código publicado en GitHub'),
+    ('p', 'El proyecto está versionado y publicado en https://github.com/RMJ4G27020/finanzas-porcinas. Las siguientes capturas, tomadas del repositorio, muestran el código real que se entrega.'),
+    ('img', 'Entregables/Capturas/GitHub/gh_repo.png', 5.6),
+    ('cap', 'Figura 0. Repositorio finanzas-porcinas en GitHub.'),
+    ('p', 'Justificación: demuestra que el código está versionado y disponible para el cliente y la docente, con la estructura de 14 archivos Swift descrita en la sección 7.1.'),
+    ('img', 'Entregables/Capturas/GitHub/gh_modelos.png', 4.6),
+    ('cap', 'Figura 0. Modelos.swift en GitHub.'),
+    ('p', 'Justificación: evidencia el modelo de datos (seis @Model) y las enumeraciones del dominio que implementan los requerimientos RF-08 a RF-17 y RNF-01.'),
+    ('img', 'Entregables/Capturas/GitHub/gh_principal.png', 4.6),
+    ('cap', 'Figura 0. VistaPrincipal.swift en GitHub.'),
+    ('p', 'Justificación: muestra la navegación por pestañas (Hoy, Animales, Dinero y Pedidos) que materializa el requerimiento RNF-06.'),
+    ('img', 'Entregables/Capturas/GitHub/gh_hoy.png', 4.6),
+    ('cap', 'Figura 0. VistaHoy.swift en GitHub.'),
+    ('p', 'Justificación: evidencia la pantalla Hoy, que atiende los requerimientos RF-01 a RF-07 (saludo, tareas del día, atajos y mis cerdos).'),
+]))
+
+# Fase IV: justificacion de las capturas del simulador
+insert_before(find_par('8.6 Conclusión', 'Heading 2')._p, build([
+    ('p', 'Justificación de las imágenes: estas capturas demuestran el cumplimiento de los casos CP-01 a CP-13 en el simulador de iPhone 17 Pro con iOS 26.4; cada una corresponde a una pantalla o a un flujo probado y aprobado en la sección 8.2.'),
+]))
+
+# Fase V: captura de la app integrada
+insert_after(p_app, build([
+    ('img', 'Pruebas/Iteracion3_Rediseno/01_hoy.png', 3.2),
+    ('cap', 'Figura 0. Pantalla Hoy de la aplicación integrada.'),
+    ('p', 'Justificación: evidencia la App completa y funcional (entregable de la Fase V): una sola aplicación con la identidad gráfica del criadero, ejecutada en el simulador de iPhone.'),
+]))
+
+# ---- renumerar figuras en orden ----
+def renumber_figures():
+    n = 0
+    for el in body.iterchildren():
+        if el.tag != q('p'):
+            continue
+        runs = el.findall('.//' + q('t'))
+        if not runs:
+            continue
+        full = ''.join(t.text or '' for t in runs).strip()
+        if re.match(r'^Figura\s+\d+\.', full):
+            n += 1
+            new = re.sub(r'^Figura\s+\d+\.', 'Figura %d.' % n, full, count=1)
+            runs[0].text = new
+            for t in runs[1:]:
+                t.text = ''
+# (la renumeracion de figuras se hace al final, tras mover la evolucion)
+
 # las cinco fases quedan consecutivas: la evolucion se mueve despues de la fase V
 h_evo = find_par('10. Evolución del diseño', 'Heading 1')._p
 h_fasev = find_par('9. Fase V.', 'Heading 1')._p
@@ -873,6 +956,8 @@ for el in body.iterchildren():
         p = Paragraph(el, doc)
         if p.style.name == 'Heading 1' and p.text.strip().startswith(CHAPTERS):
             page_break_before(el)
+
+renumber_figures()
 
 allowed = {q('p'), q('tbl'), q('sectPr')}
 bad = [el.tag for el in body.iterchildren() if el.tag not in allowed]
