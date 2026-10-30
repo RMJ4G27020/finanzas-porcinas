@@ -92,17 +92,17 @@ Reglas de código:
 **Fuera de alcance:** sincronización en la nube, leer pedidos de Facebook/WhatsApp automáticamente, pagos electrónicos, Android, cuentas de usuario.
 
 ## Entregables y documentación
-- `Entregables/Fase_III_Finanzas_Porcinas.docx` (y su `.pdf`): documento maestro estructurado según la actividad de la Fase III. Doce capítulos más anexo: 1 Introducción, 2 Parte 1 (proyecto guiado), 3 Parte 2 (plan de acción: rumbo, sector y cliente, categorías, prioridades y acciones), 4 Cronograma, 5 Fase I, 6 Fase II, 7 Fase III, 8 Fase IV, 9 Fase V, 10 Evolución del diseño, 11 Certificado, 12 Conclusiones, Referencias y Anexo A. Formato fijo: marco en bordes, títulos en Avenir Next 20, cuerpo Arial 10.5 justificado, tablas con encabezado verde #1F3A2E.
+- `Entregables/Fase_III_Finanzas_Porcinas.docx` (y su `.pdf`): documento maestro estructurado según la actividad de la Fase III. Once capítulos más tres anexos: 1 Introducción, 2 Parte 2 (plan de acción: rumbo, sector y cliente, categorías, prioridades y acciones), 3 Cronograma, 4 Fase I, 5 Fase II, 6 Fase III, 7 Fase IV, 8 Fase V, 9 Evolución del diseño, 10 Certificado, 11 Conclusiones, Referencias y Anexos A (acuerdos verbales), B (carta de firmas) y C (formato de pruebas). Formato fijo: marco en bordes, títulos en Avenir Next 20, cuerpo Arial 10.5 justificado, tablas con encabezado verde #1F3A2E.
 - **No editar el .docx a mano.** Se genera con `Archivo/build_fase3.py` a partir de `Archivo/Fase_III_Finanzas_Porcinas_ORIGINAL_2026-10-30.docx` (copia intacta del documento anterior). El script renumera capítulos, inserta las secciones nuevas, reconstruye el índice y calcula sus páginas exportando el PDF con LibreOffice. Usar el Python del runtime (trae `python-docx` y `Pillow`) y revisar el PDF resultante.
 - El índice es texto estático: sus páginas se calculan del PDF exportado con LibreOffice, así que hay que regenerarlo si cambia el contenido.
 - El informe incluye el Anexo A, una síntesis por perfil de los acuerdos verbales; no inventar nombres, fechas individuales ni citas de conversaciones que no se conservaron.
 - `Entregables/01_Cronograma_FaseIII.xlsx` y `.png` (imagen insertada como Figura 1 en el capítulo 4).
 - `Entregables/Por_separado/04_Registro_Prueba_CP-13.docx`: ficha de componente con capturas del simulador. La subida de foto real (CP-14) sigue pendiente.
-- `Pruebas/Iteracion1_Diseno_original`, `Iteracion2_Diseno_mejorado`, `Iteracion3_Rediseno`: capturas de las tres iteraciones. **Conservarlas siempre**: el capítulo 10 del documento justifica los cambios con ellas (Figuras 2 a 4).
+- `Pruebas/Iteracion1_Diseno_original`, `Iteracion2_Diseno_mejorado`, `Iteracion3_Rediseno`: capturas de las tres iteraciones. **Conservarlas siempre**: el capítulo 9 del documento justifica los cambios con ellas (Figuras 8, 10 y 11).
 - `Archivo/Iteracion2_Codigo`: código de la iteración 2, archivado.
 
 ## Cómo trabajar con José
 - Sé **literal con lo que pide el enunciado**: no agregues secciones, datos ni supuestos que no se pidieron. Si falta un dato, haz **una sola tanda de preguntas**.
 - Entrega **completo** (sin campos en blanco para que él los llene) y **responde corto**.
-- No le propongas ejercicios guiados del libro *App Development with Swift* (por ejemplo el Proyecto Restaurant): los descartó. La sustitución ya está documentada en el capítulo 2 del informe; no volver a abrir esa decisión.
+- No le propongas ejercicios guiados del libro *App Development with Swift* (por ejemplo el Proyecto Restaurant): los descartó. El capítulo de la Parte 1 (Restaurant) se eliminó del informe por decisión de José; no volver a agregarlo.
 - Si cambias la app, vuelve a compilar y comprueba la pantalla con una captura antes de decir que funciona.
