@@ -395,57 +395,37 @@ FRONT = [
     ('h2', '1.1 Descripción del proyecto'),
     ('p', 'Este documento reúne los entregables de la Fase III. Ejecución de la materia Desarrollo de proyecto de aplicaciones móviles, correspondiente al Proyecto Integrador de José Guadalupe Rico Moreno, matrícula AL03063503. El proyecto consiste en el diseño, la construcción, la prueba y la integración de Finanzas Porcinas, una aplicación móvil nativa de iOS para el Criadero Fam Rico Moreno, un emprendimiento familiar de crianza de puercos en Aldama, Tamaulipas.'),
     ('p', 'La aplicación concentra en un solo lugar el control del hato, las tareas diarias de alimentación y limpieza, las compras de insumos, las ventas, las visitas del veterinario y los pedidos que llegan por Facebook y por WhatsApp. Funciona en el iPhone de la titular, en español y sin conexión a internet.'),
-    ('p', 'El documento sigue el orden de la actividad. Primero presenta la introducción y la problemática; después, la Parte 1 (proyecto guiado) y la Parte 2 (plan de acción con rumbo, sector y cliente, prioridades, acciones y cronograma); en seguida desarrolla las cinco fases de ejecución —análisis de requerimientos, diseño de solución, construcción, pruebas e integración—, documenta la evolución del diseño y cierra con la evidencia del curso de LinkedIn Learning, las conclusiones y los anexos.'),
+    ('p', 'El documento sigue el orden de la actividad. Primero presenta la introducción y la problemática; después, la Parte 2 (plan de acción con rumbo, sector y cliente, prioridades, acciones y cronograma); en seguida desarrolla las cinco fases de ejecución —análisis de requerimientos, diseño de solución, construcción, pruebas e integración—, documenta la evolución del diseño y cierra con la evidencia del curso de LinkedIn Learning, las conclusiones y los anexos.'),
     ('h2', '1.2 Objetivo'),
     ('p', 'El objetivo de la fase es realizar el plan de acción del proyecto con un modelo de desarrollo ágil, indicar la problemática que resuelve y ejecutar ese plan hasta obtener una aplicación funcional. El plan se administra en una hoja de cálculo que concentra las actividades con su inicio, su fin, sus dependencias, su complejidad, su estado y su avance, de modo que los avances, las interrupciones y los ajustes queden registrados.'),
     ('p', 'El resultado esperado es una aplicación de iOS terminada y probada, acompañada de los documentos de requerimientos, diseño, código y pruebas, y del certificado del curso de LinkedIn Learning.'),
     ('h2', '1.3 Problemática a resolver'),
     # aqui se inserta el parrafo original de la problematica
     ('h2', '1.4 Metodología de desarrollo'),
-    ('p', 'Se aplicó el modelo ágil evolutivo. En lugar de congelar un diseño y construirlo por partes, se construyó una versión funcional completa, se mostró al cliente y se corrigió con sus observaciones; cada iteración volvió a recorrer las cinco fases. Se hicieron tres iteraciones del diseño, documentadas en el capítulo 10.'),
+    ('p', 'Se aplicó el modelo ágil evolutivo. En lugar de congelar un diseño y construirlo por partes, se construyó una versión funcional completa, se mostró al cliente y se corrigió con sus observaciones; cada iteración volvió a recorrer las cinco fases. Se hicieron tres iteraciones del diseño, documentadas en el capítulo 9.'),
     ('p', 'El plan de acción se administra en el archivo 01_Cronograma_FaseIII.xlsx, una hoja con las cinco fases, 24 actividades y una fila de seguimiento real por fase. Cada actividad declara su inicio, su fin, su duración, su dependencia, su complejidad, su estado y su avance. Las interrupciones y los ajustes se registran en la misma hoja: si una actividad se adelanta o se pospone, se actualiza su estado y se conserva la fila real.'),
     ('p', 'Las herramientas fueron Xcode 26.4, el lenguaje Swift 5, SwiftUI para la interfaz y SwiftData para la persistencia local. Las pruebas se ejecutaron en el simulador de iPhone 17 Pro con iOS 26.4. No se usaron dependencias externas ni servicios en la nube.'),
     ('h2', '1.5 Alcance y criterios de evaluación'),
     ('p', 'La siguiente tabla relaciona cada criterio de la rúbrica con el capítulo donde se cumple y con la evidencia que lo respalda.'),
     ('tbl', [
         ['Criterio de evaluación', 'Puntaje', 'Dónde se cumple'],
-        ['Listado de requerimientos posibles y alcanzables', '5', 'Capítulo 5: 24 requerimientos funcionales, 10 no funcionales y 5 fuera de alcance.'],
-        ['Documento de diseño de solución', '10', 'Capítulo 6: arquitectura, modelo de datos, diagrama de navegación, requerimientos de diseño y componentes.'],
-        ['Archivos de programación y archivos de diseño editables', '15', 'Capítulo 7: 14 archivos Swift, 6,057 líneas, proyecto FinanzasPorcinas.xcodeproj.'],
-        ['Prototipos y resultados de cada prueba', '20', 'Capítulo 8: 13 casos de componente y 5 de integración con capturas del simulador.'],
-        ['App funcional', '40', 'Capítulo 9: aplicación integrada, versión 1.0 (build 1).'],
-        ['Curso de LinkedIn Learning y evidencia del certificado', '10', 'Capítulo 11: certificado del curso Swift 5: Protocol-Oriented Programming.'],
+        ['Listado de requerimientos posibles y alcanzables', '5', 'Capítulo 4: 24 requerimientos funcionales, 10 no funcionales y 5 fuera de alcance.'],
+        ['Documento de diseño de solución', '10', 'Capítulo 5: arquitectura, modelo de datos, diagrama de navegación, requerimientos de diseño y componentes.'],
+        ['Archivos de programación y archivos de diseño editables', '15', 'Capítulo 6: 14 archivos Swift, 6,057 líneas, proyecto FinanzasPorcinas.xcodeproj.'],
+        ['Prototipos y resultados de cada prueba', '20', 'Capítulo 7: 13 casos de componente y 5 de integración con capturas del simulador.'],
+        ['App funcional', '40', 'Capítulo 8: aplicación integrada, versión 1.0 (build 1).'],
+        ['Curso de LinkedIn Learning y evidencia del certificado', '10', 'Capítulo 10: certificado del curso Swift 5: Protocol-Oriented Programming.'],
         ['Total', '100', ''],
     ], [3800, 1000, 4270]),
     ('p', 'Los entregables de la fase y su ubicación son los siguientes:'),
-    ('b', 'Cronograma: capítulo 4 y 01_Cronograma_FaseIII.xlsx.'),
-    ('b', 'Requerimientos: capítulo 5 y 02_Listado_de_Requerimientos.docx.'),
-    ('b', 'Diseño de solución: capítulo 6 y 03_Diseno_de_Solucion.docx.'),
-    ('b', 'Programación y diseño: capítulo 7 y FinanzasPorcinas.xcodeproj.'),
-    ('b', 'Prototipos y pruebas: capítulo 8 y 05_Prototipos_y_Pruebas.docx.'),
-    ('b', 'App funcional: capítulo 9 y la aplicación en el simulador.'),
-    ('b', 'Certificado: capítulo 11 y el PDF del certificado de LinkedIn Learning.'),
+    ('b', 'Cronograma: capítulo 3 y 01_Cronograma_FaseIII.xlsx.'),
+    ('b', 'Requerimientos: capítulo 4 y 02_Listado_de_Requerimientos.docx.'),
+    ('b', 'Diseño de solución: capítulo 5 y 03_Diseno_de_Solucion.docx.'),
+    ('b', 'Programación y diseño: capítulo 6 y FinanzasPorcinas.xcodeproj.'),
+    ('b', 'Prototipos y pruebas: capítulo 7 y 05_Prototipos_y_Pruebas.docx.'),
+    ('b', 'App funcional: capítulo 8 y la aplicación en el simulador.'),
+    ('b', 'Certificado: capítulo 10 y el PDF del certificado de LinkedIn Learning.'),
 
-    ('h1', '2. Parte 1. Proyecto guiado: Restaurant'),
-    ('h2', '2.1 Lo que pedía la actividad'),
-    ('p', 'La Parte 1 de la actividad solicita resolver el proyecto guiado Restaurant de la página 456 del libro App Development with Swift, tomar capturas de pantalla de los códigos correctos, integrarlas en el documento y redactar una reflexión personal sobre el aprendizaje logrado.'),
-    ('h2', '2.2 Decisión sobre el proyecto guiado'),
-    ('p', 'El proyecto guiado Restaurant se sustituyó por el desarrollo de la aplicación real del Proyecto Integrador. El ejercicio guiado reproduce un restaurante con datos de ejemplo: su propósito es practicar la navegación entre pantallas, el paso de datos y la composición de vistas, no resolver el problema de un cliente. En esta entrega esas mismas competencias se aplicaron en Finanzas Porcinas, que sí atiende una problemática real y fue revisada por la titular del criadero en tres iteraciones.'),
-    ('p', 'La sustitución es deliberada y se documenta aquí para que la evaluación sea transparente. La evidencia de código que la actividad pide capturar se integra en la sección 7.3, con los archivos reales de la aplicación; la reflexión de aprendizaje se presenta en la sección 2.4. El curso de LinkedIn Learning que acompaña a la Parte 1 sí se completó y su certificado se anexa en el capítulo 11.'),
-    ('h2', '2.3 Competencias del proyecto guiado aplicadas en la aplicación'),
-    ('p', 'La siguiente tabla relaciona lo que el proyecto guiado busca ejercitar con la forma en que se aplicó en la aplicación entregada.'),
-    ('tbl', [
-        ['Competencia del proyecto guiado', 'Cómo se aplicó en Finanzas Porcinas', 'Evidencia'],
-        ['Navegación entre pantallas y paso de datos', 'Barra de cuatro pestañas, pila de navegación para cuatro pantallas y hojas modales que reciben y devuelven datos.', 'Sección 6.4 y VistaPrincipal.swift'],
-        ['Composición de vistas y componentes reutilizables', 'Vistas pequeñas que se combinan en cada pantalla: tarjeta, etiqueta, acción rápida, barra de progreso e ilustración del cerdo.', 'Sección 6.6, Tema.swift y Componentes.swift'],
-        ['Modelo de datos y persistencia', 'Seis modelos de datos, enumeraciones del dominio y siembra de datos en el primer arranque.', 'Sección 6.3 y Modelos.swift'],
-        ['Programación orientada a protocolos', 'Enumeraciones que conforman CaseIterable, Identifiable y Codable; valores calculados y composición de vistas de SwiftUI.', 'Sección 7.3'],
-        ['Validación en simulador', '13 casos de prueba de componente y 5 de integración ejecutados en el simulador de iPhone 17 Pro.', 'Secciones 8.2 y 8.3'],
-    ], [2900, 4000, 2170]),
-    ('h2', '2.4 Reflexión personal'),
-    ('p', 'El proyecto guiado enseña a escribir código que compila y que hace lo que el ejercicio pide. El proyecto real enseñó algo distinto: que el problema casi nunca está en el código, sino en lo que no se preguntó. La titular rechazó dos diseños que técnicamente funcionaban —el primero con un “La app no es muy buena” y el segundo con un “no tiene imágenes de los animales y es cero intuitivo”— y ese rechazo obligó a reconstruir la aplicación alrededor de cuatro preguntas: qué toca hoy, cuáles son mis cerdos, cuánto gano o gasto y qué tengo que entregar.'),
-    ('p', 'Aprendí que un requerimiento no se escribe en el escritorio: se escribe con el cliente y se comprueba con él. También aprendí que la interfaz es parte del requerimiento y no un adorno posterior. Los botones de 56 puntos, el texto grande y las ilustraciones por raza no son decisiones estéticas; responden a que la app se usa de pie, en el corral, con sol y con guantes.'),
-    ('p', 'El curso Swift 5: Protocol-Oriented Programming me dio el vocabulario para modelar el dominio con enumeraciones y valores calculados en lugar de cadenas sueltas, y para componer pantallas con piezas pequeñas. Probar en el simulador, en cambio, me mostró el límite del ejercicio: encontré seis defectos y corregí los seis, pero la subida de una foto real no se pudo probar porque el simulador no tiene fotografías. Ese pendiente es la mejor lección: una app no está terminada cuando compila, sino cuando se usa en el lugar para el que se diseñó.'),
 ]
 
 NEW = build(FRONT)
@@ -458,9 +438,9 @@ P_PROB.addnext(P('La consecuencia es que las decisiones se toman con informació
 
 # ---------------------------------------------------------------- 3. Parte 2
 PARTE2 = [
-    ('h1', '3. Parte 2. Plan de acción'),
-    ('p', 'El plan de acción parte de dos insumos de la Parte 2 del proyecto integrador: la indagación del posicionamiento de la empresa y la minuta con el cliente. Esos insumos se levantaron en las siete sesiones de trabajo con la titular, realizadas del 24 al 30 de agosto de 2026, y se formalizaron con la carta de conformidad del 3 de octubre de 2026. En este capítulo se sintetizan en cinco pasos: rumbo y acciones, sector y cliente principal, clasificación de necesidades por categorías, prioridades y listado de acciones; el sexto paso, el cronograma, se presenta en el capítulo 4. La síntesis por perfil de los acuerdos verbales se conserva en el Anexo A.'),
-    ('h2', '3.1 Rumbo y acciones para posicionar el producto'),
+    ('h1', '2. Parte 2. Plan de acción'),
+    ('p', 'El plan de acción parte de dos insumos de la Parte 2 del proyecto integrador: la indagación del posicionamiento de la empresa y la minuta con el cliente. Esos insumos se levantaron en las siete sesiones de trabajo con la titular, realizadas del 24 al 30 de agosto de 2026, y se formalizaron con la carta de conformidad del 3 de octubre de 2026. En este capítulo se sintetizan en cinco pasos: rumbo y acciones, sector y cliente principal, clasificación de necesidades por categorías, prioridades y listado de acciones; el sexto paso, el cronograma, se presenta en el capítulo 3. La síntesis por perfil de los acuerdos verbales se conserva en el Anexo A.'),
+    ('h2', '2.1 Rumbo y acciones para posicionar el producto'),
     ('p', 'El rumbo se definió a partir de la misión y la visión de la empresa y se tradujo en acciones concretas de promoción y posicionamiento. Cada acción se relaciona con la parte de la aplicación que la sostiene, de modo que el plan no quede en intenciones.'),
     ('sub', 'Misión'),
     ('p', 'Criar y vender carne de cerdo de calidad en Aldama, Tamaulipas, con trato directo y precio claro por kilogramo, para que las familias de la localidad tengan carne fresca y confiable y el criadero familiar crezca de forma ordenada.'),
@@ -479,7 +459,7 @@ PARTE2 = [
         ['Orden interno y costos', 'Conocer cuánto cuesta criar a un cerdo y comparar proveedores de alimento antes de comprar.', 'Registra compras con su total, compara el precio por bulto entre proveedores y muestra si una venta deja ganancia.'],
         ['Sanidad y bienestar', 'Mostrar que los animales reciben atención veterinaria y que las visitas quedan registradas.', 'Agenda y registra las visitas del Dr. Rafael de Leija Lara, con la próxima visita y su historial.'],
     ], [2000, 3300, 3770]),
-    ('h2', '3.2 Sector y cliente principal'),
+    ('h2', '2.2 Sector y cliente principal'),
     ('p', 'La empresa pertenece al sector de la porcicultura familiar y a la venta local de carne y derivados. Su cliente principal no es una empresa ni una tienda: son los hogares de Aldama y de las colonias cercanas que piden por la cuenta personal de Facebook de la titular o por los grupos de WhatsApp de las colonias. Esa clientela no usa la aplicación; la titular captura el pedido y lo da de alta.'),
     ('tbl', [
         ['Elemento', 'Descripción', 'Implicación para la aplicación'],
@@ -491,7 +471,7 @@ PARTE2 = [
         ['Lealtad', 'Se sostiene en la relación personal y en los grupos de WhatsApp; se pierde si el pedido se entrega incompleto o tarde.', 'Aviso de pedidos por entregar en la pantalla Hoy y avance del estado hasta Entregado.'],
     ], [1700, 3600, 3770]),
     ('p', 'De esta lectura se desprenden dos decisiones de alcance. La primera: la aplicación es de uso interno del criadero, porque quien compra no necesita una cuenta ni una app. La segunda: como la lealtad depende de la entrega, el avance del pedido es un requerimiento de negocio y no una función decorativa.'),
-    ('h2', '3.3 Clasificación de necesidades por categorías'),
+    ('h2', '2.3 Clasificación de necesidades por categorías'),
     ('p', 'De la minuta con el cliente se extrajeron las necesidades y se clasificaron en ocho categorías y una más de gestión del proyecto. Cada categoría agrupa necesidades del mismo tipo y se relaciona con los requerimientos que las atienden.'),
     ('tbl', [
         ['Categoría', 'Necesidades identificadas', 'Requerimientos que la atienden'],
@@ -503,9 +483,9 @@ PARTE2 = [
         ['Pedidos y clientes', 'Registrar pedidos por canal y avanzar su entrega hasta completarla.', 'RF-19, RF-20'],
         ['Sanidad y veterinario', 'Agendar visitas, registrar atenciones y tener presente la próxima visita.', 'RF-18, RF-24'],
         ['Uso en campo y accesibilidad', 'Usarse de pie, con sol y con guantes; letra que se lea; navegación sin menús ocultos.', 'RNF-04, RNF-05, RNF-10'],
-        ['Gestión del proyecto', 'Saber qué sigue, qué se atrasó y qué cambió durante el desarrollo.', 'Capítulo 4 (cronograma) y capítulo 10 (iteraciones)'],
+        ['Gestión del proyecto', 'Saber qué sigue, qué se atrasó y qué cambió durante el desarrollo.', 'Capítulo 3 (cronograma) y capítulo 9 (iteraciones)'],
     ], [2300, 4300, 2470]),
-    ('h2', '3.4 Prioridades por categoría'),
+    ('h2', '2.4 Prioridades por categoría'),
     ('p', 'Cada categoría recibió una prioridad, una complejidad y una duración estimada, con la fase en la que se atiende. La prioridad alta se asignó a lo que sostiene el uso diario o el dinero; la complejidad se estimó por la cantidad de reglas y de pantallas involucradas.'),
     ('tbl', [
         ['Categoría', 'Prior.', 'Compl.', 'Duración estimada', 'Fase'],
@@ -519,8 +499,8 @@ PARTE2 = [
         ['Uso en campo y accesibilidad', 'Alta', 'Baja', '3 días', 'Todas las fases'],
         ['Gestión del proyecto', 'Media', 'Baja', '3 días', 'Todas las fases'],
     ], [2500, 850, 950, 1700, 3070]),
-    ('p', 'Las duraciones son estimaciones de esfuerzo por categoría y pueden traslaparse entre sí; no se suman para obtener la duración del proyecto. La duración del proyecto se toma del cronograma del capítulo 4.'),
-    ('h2', '3.5 Listado de acciones'),
+    ('p', 'Las duraciones son estimaciones de esfuerzo por categoría y pueden traslaparse entre sí; no se suman para obtener la duración del proyecto. La duración del proyecto se toma del cronograma del capítulo 3.'),
+    ('h2', '2.5 Listado de acciones'),
     ('p', 'Cada acción del proyecto tiene un inicio, un fin, una duración, una dependencia y una complejidad. Las tres primeras se ejecutaron antes del cronograma y son el insumo de la Parte 2; las 24 actividades siguientes y la entrega final forman el cronograma de la Fase III y se muestran con las fechas planeadas. Todas las fechas de la tabla son del año 2026.'),
     ('tbl', [
         ['ID', 'Acción', 'Inicio', 'Fin', 'Días', 'Depende de', 'Comp.'],
@@ -589,7 +569,7 @@ for sh in doc.inline_shapes:
 
 # 4.1 y 4.2 en la seccion retrato siguiente
 CRONO_EXTRA = [
-    ('h2', '4.1 Fases del cronograma'),
+    ('h2', '3.1 Fases del cronograma'),
     ('p', 'El cronograma organiza el trabajo en cinco fases y una entrega final. La tabla resume, para cada fase, sus fechas, su duración, el número de actividades y el entregable comprometido.'),
     ('tbl', [
         ['Fase', 'Inicio', 'Fin', 'Días', 'Act.', 'Entregable de la fase'],
@@ -600,7 +580,7 @@ CRONO_EXTRA = [
         ['Integración', '25 nov', '29 nov', '5', '4', 'App completa y funcional'],
         ['Entrega', '30 nov', '30 nov', '1', '—', 'Documento integrado de la Fase III'],
     ], [2500, 1300, 1300, 800, 800, 2370]),
-    ('h2', '4.2 Seguimiento, interrupciones y ajustes'),
+    ('h2', '3.2 Seguimiento, interrupciones y ajustes'),
     ('p', 'El cronograma se administra en 01_Cronograma_FaseIII.xlsx. Cada fila declara inicio, fin, duración, estado (Programada, En curso o Concluida) y porcentaje de avance, y cada fase tiene una fila Real que conserva lo que ocurrió, de modo que el plan y la realidad se comparan en la misma hoja. Con esa hoja se registran los avances, las interrupciones y los ajustes del proyecto. Al 30 de octubre de 2026 las fases de análisis y de diseño están concluidas al 100 %, y las de construcción, pruebas e integración están en curso con 83 %, 98 % y 88 % de avance, porque el desarrollo se adelantó a las fechas planeadas.'),
     ('p', 'Los ajustes registrados durante la ejecución son los siguientes.'),
     ('tbl', [
@@ -616,38 +596,38 @@ insert_after(CAP_P, N4)
 
 # ---------------------------------------------------------------- 5. renombres
 RENAME = {
-    '1. Cronograma de actividades': '4. Cronograma de actividades',
-    '2. Listado de requerimientos posibles y alcanzables': '5. Fase I. Análisis de requerimientos',
-    '2.1 Introducción': '5.1 Introducción',
-    '2.3 Requerimientos funcionales': '5.2 Requerimientos funcionales',
-    '2.4 Requerimientos no funcionales': '5.3 Requerimientos no funcionales',
-    '2.5 Requerimientos fuera de alcance': '5.4 Requerimientos fuera de alcance',
-    '3. Documento de diseño de solución': '6. Fase II. Diseño de solución',
-    '3.1 Introducción': '6.1 Introducción',
-    '3.2 Arquitectura de la solución': '6.2 Arquitectura de la solución',
-    '3.3 Modelo de datos': '6.3 Modelo de datos',
-    '3.4 Diagrama de navegación': '6.4 Diagrama de navegación',
-    '3.5 Requerimientos de diseño': '6.5 Requerimientos de diseño',
-    '3.6 Componentes funcionales': '6.6 Componentes funcionales',
-    '4. Archivos de programación y archivos de diseño editables': '7. Fase III. Construcción',
-    '4.1 Archivos de programación': '7.1 Archivos de programación',
-    '4.2 Archivos de diseño editables': '7.2 Archivos de diseño editables',
-    '5. Prototipos y resultados de pruebas': '8. Fase IV. Pruebas',
-    '5.1 Introducción': '8.1 Introducción',
-    '5.2 Casos de prueba de componente': '8.2 Casos de prueba de componente',
-    '5.3 Pruebas de integración': '8.3 Pruebas de integración',
-    '5.4 Defectos encontrados y corregidos': '8.4 Defectos encontrados y corregidos',
-    '5.5 Evidencia de la iteración 3: diseño vigente': '8.5 Evidencia de la iteración 3: diseño vigente',
-    '5.6 Conclusión': '8.6 Conclusión',
-    '6. Evolución del diseño y justificación de los cambios': '10. Evolución del diseño y justificación de los cambios',
-    '6.1 Introducción': '10.1 Introducción',
-    '6.2 Resumen de las iteraciones': '10.2 Resumen de las iteraciones',
-    '6.3 Iteración 1: diseño original': '10.3 Iteración 1: diseño original',
-    '6.4 Iteración 2: diseño mejorado': '10.4 Iteración 2: diseño mejorado',
-    '6.5 Justificación de los cambios solicitados por el cliente': '10.5 Justificación de los cambios solicitados por el cliente',
-    '6.6 Qué cambió y qué se conservó': '10.6 Qué cambió y qué se conservó',
-    '7. App funcional': '9. Fase V. Integración: app funcional',
-    '8. Evidencia del certificado de LinkedIn Learning': '11. Certificado de LinkedIn Learning',
+    '1. Cronograma de actividades': '3. Cronograma de actividades',
+    '2. Listado de requerimientos posibles y alcanzables': '4. Fase I. Análisis de requerimientos',
+    '2.1 Introducción': '4.1 Introducción',
+    '2.3 Requerimientos funcionales': '4.2 Requerimientos funcionales',
+    '2.4 Requerimientos no funcionales': '4.3 Requerimientos no funcionales',
+    '2.5 Requerimientos fuera de alcance': '4.4 Requerimientos fuera de alcance',
+    '3. Documento de diseño de solución': '5. Fase II. Diseño de solución',
+    '3.1 Introducción': '5.1 Introducción',
+    '3.2 Arquitectura de la solución': '5.2 Arquitectura de la solución',
+    '3.3 Modelo de datos': '5.3 Modelo de datos',
+    '3.4 Diagrama de navegación': '5.4 Diagrama de navegación',
+    '3.5 Requerimientos de diseño': '5.5 Requerimientos de diseño',
+    '3.6 Componentes funcionales': '5.6 Componentes funcionales',
+    '4. Archivos de programación y archivos de diseño editables': '6. Fase III. Construcción',
+    '4.1 Archivos de programación': '6.1 Archivos de programación',
+    '4.2 Archivos de diseño editables': '6.2 Archivos de diseño editables',
+    '5. Prototipos y resultados de pruebas': '7. Fase IV. Pruebas',
+    '5.1 Introducción': '7.1 Introducción',
+    '5.2 Casos de prueba de componente': '7.2 Casos de prueba de componente',
+    '5.3 Pruebas de integración': '7.3 Pruebas de integración',
+    '5.4 Defectos encontrados y corregidos': '7.4 Defectos encontrados y corregidos',
+    '5.5 Evidencia de la iteración 3: diseño vigente': '7.5 Evidencia de la iteración 3: diseño vigente',
+    '5.6 Conclusión': '7.6 Conclusión',
+    '6. Evolución del diseño y justificación de los cambios': '9. Evolución del diseño y justificación de los cambios',
+    '6.1 Introducción': '9.1 Introducción',
+    '6.2 Resumen de las iteraciones': '9.2 Resumen de las iteraciones',
+    '6.3 Iteración 1: diseño original': '9.3 Iteración 1: diseño original',
+    '6.4 Iteración 2: diseño mejorado': '9.4 Iteración 2: diseño mejorado',
+    '6.5 Justificación de los cambios solicitados por el cliente': '9.5 Justificación de los cambios solicitados por el cliente',
+    '6.6 Qué cambió y qué se conservó': '9.6 Qué cambió y qué se conservó',
+    '7. App funcional': '8. Fase V. Integración: app funcional',
+    '8. Evidencia del certificado de LinkedIn Learning': '10. Certificado de LinkedIn Learning',
 }
 renamed = 0
 for el in body.iterchildren():
@@ -667,25 +647,25 @@ assert renamed == len(RENAME), (renamed, len(RENAME))
 
 # ---------------------------------------------------------------- 6. insertos
 # 5.1: parrafo de entrada
-h51 = find_par('5.1 Introducción', 'Heading 2')._p
+h51 = find_par('4.1 Introducción', 'Heading 2')._p
 h51.addnext(P('Esta fase corresponde al análisis de requerimientos: las entrevistas con la titular y el operador, la revisión de los procesos del criadero y la identificación de oportunidades para la aplicación. El resultado es el listado de requerimientos posibles y alcanzables que se presenta en las secciones siguientes.'))
 
 # 5.5 Entregable
-h6 = find_par('6. Fase II. Diseño de solución', 'Heading 1')._p
+h6 = find_par('5. Fase II. Diseño de solución', 'Heading 1')._p
 insert_before(h6, build([
-    ('h2', '5.5 Entregable de la fase'),
+    ('h2', '4.5 Entregable de la fase'),
     ('p', 'El entregable de esta fase es el listado de requerimientos posibles y alcanzables de este capítulo: 24 requerimientos funcionales, 10 no funcionales y 5 fuera de alcance, cada uno con su prioridad, su complejidad y su estado. Se entrega también como documento independiente en 02_Listado_de_Requerimientos.docx.'),
 ]))
 
 # 6.7 Entregable
-h7 = find_par('7. Fase III. Construcción', 'Heading 1')._p
+h7 = find_par('6. Fase III. Construcción', 'Heading 1')._p
 insert_before(h7, build([
-    ('h2', '6.7 Entregable de la fase'),
+    ('h2', '5.7 Entregable de la fase'),
     ('p', 'El entregable de esta fase es este documento de diseño de solución, que integra la arquitectura, el modelo de datos, el diagrama de navegación con la entrada y la salida de cada transición, los requerimientos de diseño y los componentes funcionales. Se entrega también como 03_Diseno_de_Solucion.docx.'),
 ]))
 
 # 7.3 y 7.4
-h8 = find_par('8. Fase IV. Pruebas', 'Heading 1')._p
+h8 = find_par('7. Fase IV. Pruebas', 'Heading 1')._p
 CODE_LINES = [
     'enum Raza: String, Codable, CaseIterable, Identifiable {',
     '    case comun = "Común"',
@@ -712,7 +692,7 @@ CODE_LINES = [
     '}',
 ]
 insert_before(h8, build([
-    ('h2', '7.3 Evidencia de código y documentación'),
+    ('h2', '6.3 Evidencia de código y documentación'),
     ('p', 'El código está organizado por responsabilidad: un archivo por modelo, un archivo por pantalla y dos archivos de componentes reutilizables (Tema.swift y Componentes.swift). Cada archivo abre con comentarios de sección y las decisiones que no son evidentes están documentadas en el propio código; por ejemplo, por qué el precio se elige en cada venta y no se deduce de la raza.'),
     ('p', 'El fragmento siguiente reproduce parte de Modelos.swift, el archivo que define el dominio. Los puntos suspensivos indican líneas omitidas en el documento; el código completo está en el proyecto.'),
     ('code', CODE_LINES),
@@ -731,53 +711,53 @@ insert_before(h8, build([
         ['Ilustraciones', 'AvatarCerdo.swift', '147', 'Media', 'CP-13'],
     ], [2000, 2900, 900, 1000, 2270]),
     ('p', 'La versión quedó registrada como 1.0 (build 1). El número de compilación se incrementa con cada entrega y el nombre de la versión cambia solo cuando se agrega un requerimiento nuevo, de modo que el historial de cambios se pueda reconstruir.'),
-    ('h2', '7.4 Entregable de la fase'),
+    ('h2', '6.4 Entregable de la fase'),
     ('p', 'El entregable de esta fase son los archivos de programación (14 archivos Swift, 6,057 líneas) y los archivos de diseño editables: el tema, los componentes y las ilustraciones en código, más las capturas de las tres iteraciones. El proyecto completo, con el esquema FinanzasPorcinas, está en FinanzasPorcinas.xcodeproj.'),
 ]))
 
 # 8.7 Entregable
-h9 = find_par('10. Evolución del diseño', 'Heading 1')._p
+h9 = find_par('9. Evolución del diseño', 'Heading 1')._p
 insert_before(h9, build([
-    ('h2', '8.7 Entregable de la fase'),
+    ('h2', '7.7 Entregable de la fase'),
     ('p', 'El entregable de esta fase son los prototipos funcionales y el resultado de cada prueba: 13 casos de componente y 5 de integración ejecutados en el simulador, con sus capturas y sus defectos corregidos. Se entregan también como 05_Prototipos_y_Pruebas.docx y 04_Registro_Prueba_CP-13.docx.'),
 ]))
 
 # 10.1 / 10.2
-h10 = find_par('9. Fase V.', 'Heading 1')._p
-h10.addnext(H2('9.1 La aplicación integrada'))
+h10 = find_par('8. Fase V.', 'Heading 1')._p
+h10.addnext(H2('8.1 La aplicación integrada'))
 p_app = h10.getnext().getnext()
 tbl_app = p_app.getnext()
 assert tbl_app.tag == q('tbl')
 insert_after(tbl_app, build([
-    ('h2', '9.2 Entregable de la fase'),
+    ('h2', '8.2 Entregable de la fase'),
     ('p', 'El entregable de esta fase es la App completa y funcional: los seis módulos integrados en una sola aplicación, con los componentes de cada pantalla conectados a los datos y al servicio local, y con la identidad gráfica del criadero.'),
 ]))
 
 # ---- figuras con justificacion por fase ----
 # Fase I: captura del listado de requerimientos
-insert_before(find_par('5.5 Entregable de la fase', 'Heading 2')._p, build([
+insert_before(find_par('4.5 Entregable de la fase', 'Heading 2')._p, build([
     ('img', 'Entregables/Capturas/Requerimientos_Listado_p1.png', 5.2),
     ('cap', 'Figura 0. Primera página del listado de requerimientos entregado (02_Listado_de_Requerimientos.docx).'),
     ('p', 'Justificación: esta captura es la evidencia del entregable de la fase; muestra que cada requerimiento queda registrado con su prioridad, su complejidad y su estado, para que el listado sea auditable por la titular del criadero.'),
 ]))
 
 # Fase II: diagrama de navegacion + referencia a la justificacion del cambio de diseno
-insert_before(find_par('6.5 Requerimientos de diseño', 'Heading 2')._p, build([
+insert_before(find_par('5.5 Requerimientos de diseño', 'Heading 2')._p, build([
     ('img', 'Entregables/Capturas/Diagrama_Navegacion.png', 6.2),
     ('cap', 'Figura 0. Diagrama de navegación de la aplicación.'),
     ('p', 'Justificación: el diagrama resume las transiciones de la sección anterior e indica, en cada caso, la entrada y la salida; sirve de plano para construir cada pantalla en la Fase III.'),
 ]))
-insert_before(find_par('6.7 Entregable de la fase', 'Heading 2')._p, build([
-    ('p', 'El diseño se iteró tres veces por indicación del cliente; la justificación de cada cambio y las capturas de las iteraciones se documentan en el capítulo 10, una vez terminadas las cinco fases.'),
+insert_before(find_par('5.7 Entregable de la fase', 'Heading 2')._p, build([
+    ('p', 'El diseño se iteró tres veces por indicación del cliente; la justificación de cada cambio y las capturas de las iteraciones se documentan en el capítulo 9, una vez terminadas las cinco fases.'),
 ]))
 
 # Fase III: codigo publicado en GitHub
-insert_before(find_par('7.4 Entregable de la fase', 'Heading 2')._p, build([
+insert_before(find_par('6.4 Entregable de la fase', 'Heading 2')._p, build([
     ('sub', 'Código publicado en GitHub'),
     ('p', 'El proyecto está versionado y publicado en https://github.com/RMJ4G27020/finanzas-porcinas. Las siguientes capturas, tomadas del repositorio, muestran el código real que se entrega.'),
     ('img', 'Entregables/Capturas/GitHub/gh_repo.png', 5.6),
     ('cap', 'Figura 0. Repositorio finanzas-porcinas en GitHub.'),
-    ('p', 'Justificación: demuestra que el código está versionado y disponible para el cliente y la docente, con la estructura de 14 archivos Swift descrita en la sección 7.1.'),
+    ('p', 'Justificación: demuestra que el código está versionado y disponible para el cliente y la docente, con la estructura de 14 archivos Swift descrita en la sección 6.1.'),
     ('img', 'Entregables/Capturas/GitHub/gh_modelos.png', 4.6),
     ('cap', 'Figura 0. Modelos.swift en GitHub.'),
     ('p', 'Justificación: evidencia el modelo de datos (seis @Model) y las enumeraciones del dominio que implementan los requerimientos RF-08 a RF-17 y RNF-01.'),
@@ -790,8 +770,8 @@ insert_before(find_par('7.4 Entregable de la fase', 'Heading 2')._p, build([
 ]))
 
 # Fase IV: justificacion de las capturas del simulador
-insert_before(find_par('8.6 Conclusión', 'Heading 2')._p, build([
-    ('p', 'Justificación de las imágenes: estas capturas demuestran el cumplimiento de los casos CP-01 a CP-13 en el simulador de iPhone 17 Pro con iOS 26.4; cada una corresponde a una pantalla o a un flujo probado y aprobado en la sección 8.2.'),
+insert_before(find_par('7.6 Conclusión', 'Heading 2')._p, build([
+    ('p', 'Justificación de las imágenes: estas capturas demuestran el cumplimiento de los casos CP-01 a CP-13 en el simulador de iPhone 17 Pro con iOS 26.4; cada una corresponde a una pantalla o a un flujo probado y aprobado en la sección 7.2.'),
 ]))
 
 # Fase V: captura de la app integrada
@@ -820,8 +800,8 @@ def renumber_figures():
 # (la renumeracion de figuras se hace al final, tras mover la evolucion)
 
 # las cinco fases quedan consecutivas: la evolucion se mueve despues de la fase V
-h_evo = find_par('10. Evolución del diseño', 'Heading 1')._p
-h_fasev = find_par('9. Fase V.', 'Heading 1')._p
+h_evo = find_par('9. Evolución del diseño', 'Heading 1')._p
+h_fasev = find_par('8. Fase V.', 'Heading 1')._p
 bloque = []
 el = h_evo
 while el is not None and el is not h_fasev:
@@ -830,12 +810,12 @@ while el is not None and el is not h_fasev:
 assert len(bloque) > 20, len(bloque)
 for e in bloque:
     body.remove(e)
-h11 = find_par('11. Certificado de LinkedIn Learning', 'Heading 1')._p
+h11 = find_par('10. Certificado de LinkedIn Learning', 'Heading 1')._p
 for e in bloque:
     h11.addprevious(e)
 
 # 11: fecha del certificado
-h11 = find_par('11. Certificado de LinkedIn Learning', 'Heading 1')._p
+h11 = find_par('10. Certificado de LinkedIn Learning', 'Heading 1')._p
 p_curso = h11.getnext()
 insert_after(p_curso, [P('El certificado se emitió a nombre de José Guadalupe Rico Moreno el 25 de octubre de 2026 y se incluye a continuación.')])
 
@@ -844,9 +824,9 @@ h_anexo = find_par('Anexo A.', 'Heading 1')._p
 pb = h_anexo.getprevious()
 assert pb is not None and pb.findall('.//' + q('br')), 'no se encontro el salto de pagina'
 CIERRE = [
-    ('h1', '12. Conclusiones y reflexión'),
+    ('h1', '11. Conclusiones y reflexión'),
     ('p', 'La Fase III se cumplió. La aplicación Finanzas Porcinas está construida, probada e integrada: reúne el control del hato, las tareas del día, las compras, las ventas, las visitas del veterinario y los pedidos, en cuatro pestañas que responden a las cuatro preguntas del criadero. Son 14 archivos Swift y 6,057 líneas, con 13 casos de prueba de componente y 5 de integración aprobados, y el certificado del curso de LinkedIn Learning está anexado.'),
-    ('p', 'Los siete entregables de la actividad están cubiertos: el cronograma (capítulo 4), el listado de requerimientos (capítulo 5), el documento de diseño (capítulo 6), los archivos de programación y de diseño (capítulo 7), los prototipos y resultados de prueba (capítulo 8), la app funcional (capítulo 9) y la evidencia del certificado (capítulo 11). El plan de acción de la Parte 2 se desarrolló en el capítulo 3 y su ejecución se documenta fase por fase.'),
+    ('p', 'Los siete entregables de la actividad están cubiertos: el cronograma (capítulo 3), el listado de requerimientos (capítulo 4), el documento de diseño (capítulo 5), los archivos de programación y de diseño (capítulo 6), los prototipos y resultados de prueba (capítulo 7), la app funcional (capítulo 8) y la evidencia del certificado (capítulo 10). El plan de acción de la Parte 2 se desarrolló en el capítulo 2 y su ejecución se documenta fase por fase.'),
     ('p', 'Quedan pendientes que no se ocultaron: la subida de una foto real (CP-14) porque el simulador no tiene fotografías, el escalado de toda la letra con el tamaño de texto del sistema (RNF-10), el historial de pesos por animal (RF-21), la ración y la dieta por propósito (RF-22), la conversión del alimento y el costo real por kilogramo (RF-23) y el calendario de sanidad por animal (RF-24). También quedó registrada, sin causa identificada, la observación de que en dos ocasiones un primer toque en un botón no produjo efecto y funcionó al repetirlo.'),
     ('p', 'La reflexión final es que el modelo ágil evolutivo no fue una formalidad: las tres iteraciones cambiaron la aplicación de fondo, y el cliente fue quien decidió qué era intuitivo y qué no. La app no se parece al primer diseño y eso es un resultado, no un fracaso. El siguiente paso es probarla en un iPhone real, en el corral y con guantes, que es el escenario para el que se diseñó.'),
     ('h1', 'Referencias'),
@@ -857,6 +837,32 @@ CIERRE = [
     ('p_left', 'Universidad Tecmilenio. (2026). Desarrollo de proyecto de aplicaciones móviles. Fase III. Ejecución [actividad de la materia].'),
 ]
 insert_before(pb, build(CIERRE))
+
+# ---- anexos: carta de firmas y formato de pruebas ----
+ANEXOS = build([
+    ('h1', 'Anexo B. Carta de conformidad y firmas'),
+    ('p', 'Carta de conformidad de la Parte 2 del proyecto integrador: manifiesta el interés del Criadero Fam Rico Moreno en integrarse al mercado de soluciones móviles y la aprobación del maestro titular, con los espacios de firma de la empresa, del alumno y del profesor.'),
+    ('img', 'Entregables/Capturas/Anexos/AnexoB_Carta_Firmas.png', 6.0),
+    ('cap', 'Carta de conformidad y firmas (Parte 2).'),
+    ('h1', 'Anexo C. Formato de pruebas — Desarrollo de App en Swift'),
+    ('p', 'Formato usado para registrar cada caso de prueba (secciones 1 a 11). Se anexa la plantilla en blanco y, como ejemplo resuelto, el registro de la prueba de componente CP-13.'),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_Formato_Pruebas_p1.png', 6.0),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_Formato_Pruebas_p2.png', 6.0),
+    ('cap', 'Formato de pruebas (plantilla), páginas 1 y 2.'),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_CP13_p1.png', 6.0),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_CP13_p2.png', 6.0),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_CP13_p3.png', 6.0),
+    ('cap', 'Registro de la prueba CP-13 (ejemplo resuelto), páginas 1 a 3.'),
+])
+final_sect = list(body.iterchildren())[-1]
+assert final_sect.tag == q('sectPr')
+for e in ANEXOS:
+    final_sect.addprevious(e)
+for htxt in ('Anexo B.', 'Anexo C.'):
+    hx = find_par(htxt, 'Heading 1')._p
+    page_break_before(hx)
+
+
 
 # ---------------------------------------------------------------- 7. figuras
 FIG = {
@@ -880,7 +886,7 @@ for tbl in doc.tables:
             if 'capítulos 2, 3 y 5' in c.text:
                 for t in c._tc.iter(q('t')):
                     if t.text and 'capítulos 2, 3 y 5' in t.text:
-                        t.text = t.text.replace('capítulos 2, 3 y 5', 'capítulos 5, 6 y 8')
+                        t.text = t.text.replace('capítulos 2, 3 y 5', 'capítulos 4, 5 y 7')
 
 # portada: descripcion del entregable
 for row in doc.tables[0].rows:
@@ -937,7 +943,7 @@ for txt, lvl in entries:
 toc_elements[-1].find(q('pPr')).append(SECT)
 insert_after(IDX_HEAD, toc_elements)
 
-CHAPTERS = ('2. ', '3. ', '5. ', '6. ', '7. ', '8. ', '9. ', '10. ', '12. ')
+CHAPTERS = ('2. ', '4. ', '5. ', '6. ', '7. ', '8. ', '9. ', '11. ')
 # quitar parrafos vacios que quedaron antes de un capitulo (provocan paginas en blanco)
 for el in list(body.iterchildren()):
     if el.tag == q('p'):
