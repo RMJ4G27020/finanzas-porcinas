@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 enum Seccion: Hashable {
-    case hoy, animales, dinero, pedidos
+    case hoy, animales, dinero
 }
 
 struct VistaPrincipal: View {
@@ -24,7 +24,6 @@ struct VistaPrincipal: View {
         switch args[i + 1] {
         case "animales": return .animales
         case "dinero": return .dinero
-        case "pedidos": return .pedidos
         default: return .hoy
         }
     }
@@ -53,11 +52,6 @@ struct VistaPrincipal: View {
                 .barraEstadoOpaca()
                 .tabItem { Label("Dinero", systemImage: "banknote") }
                 .tag(Seccion.dinero)
-
-            VistaPedidos()
-                .barraEstadoOpaca()
-                .tabItem { Label("Pedidos", systemImage: "bag") }
-                .tag(Seccion.pedidos)
         }
         .tint(Tema.verde)
         .environment(navegacion)

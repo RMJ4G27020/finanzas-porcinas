@@ -12,7 +12,6 @@ enum DatosIniciales {
         for tarea in tareasDeHoy() { contexto.insert(tarea) }
         for compra in compras() { contexto.insert(compra) }
         for visita in visitas() { contexto.insert(visita) }
-        for pedido in pedidos() { contexto.insert(pedido) }
         try? contexto.save()
     }
 
@@ -71,16 +70,6 @@ enum DatosIniciales {
             VisitaVeterinario(fecha: dia(2026, 9, 2),  tipoAtencion: "Aplicación de vitaminas", alcance: "Cerdo 02"),
             VisitaVeterinario(fecha: dia(2026, 8, 26), tipoAtencion: "Desparasitación",         alcance: "Todos los animales"),
             VisitaVeterinario(fecha: dia(2026, 8, 11), tipoAtencion: "Revisión de patas",       alcance: "Cerdo 04"),
-        ]
-    }
-
-    static func pedidos() -> [Pedido] {
-        [
-            Pedido(folio: 14, fecha: dia(2026, 9, 18), canal: .whatsapp, kilos: 5,  precioPorKg: 40, estado: .nuevo),
-            Pedido(folio: 13, fecha: dia(2026, 9, 17), canal: .facebook, kilos: 10, precioPorKg: 40, estado: .porEntregar),
-            Pedido(folio: 12, fecha: dia(2026, 9, 16), canal: .whatsapp, kilos: 3,  precioPorKg: 80, estado: .porEntregar),
-            Pedido(folio: 11, fecha: dia(2026, 9, 12), canal: .facebook, kilos: 8,  precioPorKg: 80, estado: .entregado),
-            Pedido(folio: 10, fecha: dia(2026, 9, 9),  canal: .whatsapp, kilos: 12, precioPorKg: 40, estado: .entregado),
         ]
     }
 }

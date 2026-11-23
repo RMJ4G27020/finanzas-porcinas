@@ -47,6 +47,7 @@ struct VistaFichaAnimal: View {
                     encabezado
                     tresDatos
                     botones
+                    sobreLaRaza
                     notas
                     botonQuitar
                 }
@@ -110,6 +111,17 @@ struct VistaFichaAnimal: View {
             FotoAnimal(animal: animal, radio: 0)
                 .frame(maxWidth: .infinity)
                 .frame(height: 280)
+
+            if animal.foto == nil {
+                Text("Foto de ejemplo de la raza")
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundStyle(Tema.tinta)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Capsule().fill(Tema.superficie.opacity(0.92)))
+                    .padding(16)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            }
 
             HStack(spacing: 8) {
                 if animal.foto != nil {
@@ -256,6 +268,37 @@ struct VistaFichaAnimal: View {
         animal.destino = enVenta ? .crianza : .venta
         try? modelContext.save()
         mostrarAviso("\(animal.arete) ahora está en \(animal.destino.rawValue)")
+    }
+
+    // MARK: Sobre la raza
+
+    private var sobreLaRaza: some View {
+        let info = GuiaRazas.info(animal.raza)
+        return VStack(alignment: .leading, spacing: 10) {
+            TituloSeccion(texto: "Sobre la raza", icono: "book")
+            NavigationLink {
+                VistaGuiaRazas(razaInicial: animal.raza)
+            } label: {
+                Tarjeta {
+                    Text(info.titulo)
+                        .font(.system(size: 17, weight: .bold))
+                        .foregroundStyle(Tema.tinta)
+                    Text(info.resumen)
+                        .font(.system(size: 15))
+                        .foregroundStyle(Tema.secundario)
+                        .fixedSize(horizontal: false, vertical: true)
+                    HStack(spacing: 6) {
+                        Text("Ver guía de razas")
+                        Image(systemName: "chevron.right")
+                            .accessibilityHidden(true)
+                    }
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(Tema.verde)
+                }
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.top, 8)
     }
 
     // MARK: Notas
@@ -765,5 +808,5 @@ private struct VistaPreviaFicha: View {
 #Preview {
     VistaPreviaFicha()
         .modelContainer(for: [Animal.self, Tarea.self, Compra.self, Venta.self,
-                              VisitaVeterinario.self, Pedido.self], inMemory: true)
+                              VisitaVeterinario.self], inMemory: true)
 }

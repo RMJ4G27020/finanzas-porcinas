@@ -36,31 +36,6 @@ enum TipoTarea: String, Codable, CaseIterable, Identifiable {
     }
 }
 
-enum Canal: String, Codable, CaseIterable, Identifiable {
-    case facebook = "Facebook"
-    case whatsapp = "WhatsApp"
-    var id: String { rawValue }
-    var detalle: String {
-        switch self {
-        case .facebook: return "Cuenta de Virginia"
-        case .whatsapp: return "Grupo Col. Constitución"
-        }
-    }
-    var simbolo: String {
-        switch self {
-        case .facebook: return "globe"
-        case .whatsapp: return "bubble.left.and.bubble.right"
-        }
-    }
-}
-
-enum EstadoPedido: String, Codable, CaseIterable, Identifiable {
-    case nuevo = "Nuevo"
-    case porEntregar = "Por entregar"
-    case entregado = "Entregado"
-    var id: String { rawValue }
-}
-
 /// Precios de venta reales del criadero: $40 o $80 por kilogramo según la raza.
 enum PrecioKg: Double, Codable, CaseIterable, Identifiable {
     case cuarenta = 40
@@ -188,45 +163,6 @@ final class VisitaVeterinario {
         self.tipoAtencion = tipoAtencion
         self.alcance = alcance
         self.notas = notas
-    }
-}
-
-@Model
-final class Pedido {
-    var folio: Int = 0
-    var fecha: Date = Date()
-    var canalRaw: String = Canal.whatsapp.rawValue
-    var kilos: Double = 0
-    var precioPorKg: Double = 40
-    var estadoRaw: String = EstadoPedido.nuevo.rawValue
-
-    init(folio: Int, fecha: Date, canal: Canal, kilos: Double,
-         precioPorKg: Double, estado: EstadoPedido) {
-        self.folio = folio
-        self.fecha = fecha
-        self.canalRaw = canal.rawValue
-        self.kilos = kilos
-        self.precioPorKg = precioPorKg
-        self.estadoRaw = estado.rawValue
-    }
-
-    var canal: Canal {
-        get { Canal(rawValue: canalRaw) ?? .whatsapp }
-        set { canalRaw = newValue.rawValue }
-    }
-    var estado: EstadoPedido {
-        get { EstadoPedido(rawValue: estadoRaw) ?? .nuevo }
-        set { estadoRaw = newValue.rawValue }
-    }
-    var total: Double { kilos * precioPorKg }
-    var titulo: String { String(format: "Pedido %03d", folio) }
-    var cuenta: String { "\(Int(kilos)) kg × \(pesos(precioPorKg)) = \(pesos(total))" }
-    var chip: EstiloChip {
-        switch estado {
-        case .nuevo: return .pendiente
-        case .porEntregar: return .neutro
-        case .entregado: return .exito
-        }
     }
 }
 

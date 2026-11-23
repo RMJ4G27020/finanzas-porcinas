@@ -1,7 +1,8 @@
 import SwiftUI
 import UIKit
 
-/// Ilustración de un cerdo según su raza. Si el animal tiene foto propia, se muestra la foto.
+/// Imagen de un cerdo según su raza: su foto propia si la tiene; si no, la foto real de la raza;
+/// y, como último recurso, la ilustración dibujada.
 struct AvatarCerdo: View {
     let raza: Raza
     var foto: Data? = nil
@@ -13,6 +14,12 @@ struct AvatarCerdo: View {
                 fondo
                 if let foto, let imagen = UIImage(data: foto) {
                     Image(uiImage: imagen)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: g.size.width, height: g.size.height)
+                        .clipped()
+                } else if let real = raza.fotoReal {
+                    Image(uiImage: real)
                         .resizable()
                         .scaledToFill()
                         .frame(width: g.size.width, height: g.size.height)

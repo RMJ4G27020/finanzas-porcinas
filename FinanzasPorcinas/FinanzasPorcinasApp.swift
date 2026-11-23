@@ -9,7 +9,7 @@ struct FinanzasPorcinasApp: App {
         do {
             contenedor = try ModelContainer(
                 for: Animal.self, Tarea.self, Compra.self, Venta.self,
-                     VisitaVeterinario.self, Pedido.self
+                     VisitaVeterinario.self
             )
             DatosIniciales.sembrarSiHaceFalta(ModelContext(contenedor))
         } catch {

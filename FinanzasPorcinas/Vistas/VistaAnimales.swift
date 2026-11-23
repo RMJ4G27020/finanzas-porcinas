@@ -88,7 +88,21 @@ struct VistaAnimales: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    TituloPantalla(titulo: "Mis cerdos", subtitulo: subtitulo)
+                    HStack(alignment: .top) {
+                        TituloPantalla(titulo: "Mis cerdos", subtitulo: subtitulo)
+                        NavigationLink {
+                            VistaGuiaRazas()
+                        } label: {
+                            Label("Razas", systemImage: "book.fill")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundStyle(Tema.verde)
+                                .padding(.horizontal, 14)
+                                .frame(minHeight: 44)
+                                .background(Capsule().fill(Tema.superficie))
+                                .overlay(Capsule().stroke(Tema.linea, lineWidth: 1))
+                        }
+                        .accessibilityLabel("Guía de razas")
+                    }
 
                     if !animales.isEmpty {
                         botonesDeFiltro
@@ -815,5 +829,5 @@ private struct VistaPreviaAnimales: View {
 #Preview {
     VistaPreviaAnimales()
         .modelContainer(for: [Animal.self, Tarea.self, Compra.self, Venta.self,
-                              VisitaVeterinario.self, Pedido.self], inMemory: true)
+                              VisitaVeterinario.self], inMemory: true)
 }

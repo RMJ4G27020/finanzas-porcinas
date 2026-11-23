@@ -739,5 +739,5 @@ private struct PruebaVistaDinero: View {
 #Preview {
     PruebaVistaDinero()
         .modelContainer(for: [Animal.self, Tarea.self, Compra.self, Venta.self,
-                              VisitaVeterinario.self, Pedido.self], inMemory: true)
+                              VisitaVeterinario.self], inMemory: true)
 }

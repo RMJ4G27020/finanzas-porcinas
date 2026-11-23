@@ -102,7 +102,6 @@ struct TituloSeccion: View {
 @Observable
 final class Navegacion {
     var abrirAltaAnimal = false
-    var abrirNuevoPedido = false
 }
 
 extension View {

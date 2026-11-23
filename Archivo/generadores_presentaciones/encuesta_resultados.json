@@ -1,0 +1,14 @@
+{
+  "escalaMax": 5,
+  "nota": "Respondió Virginia del Carmen Moreno Gallegos, titular del criadero. Escala de 1 (nada de acuerdo) a 5 (totalmente de acuerdo).",
+  "preguntas": [
+    {"texto": "Tareas del día", "calificacion": 5},
+    {"texto": "Encontrar cerdos", "calificacion": 5},
+    {"texto": "Vender en 3 pasos", "calificacion": 5},
+    {"texto": "Comparar proveedores", "calificacion": 5},
+    {"texto": "Guía de razas", "calificacion": 5},
+    {"texto": "Botones y texto", "calificacion": 5},
+    {"texto": "Satisfacción general", "calificacion": 5},
+    {"texto": "Recomendaría la app", "calificacion": 5}
+  ]
+}

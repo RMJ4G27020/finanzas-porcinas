@@ -30,6 +30,17 @@ PDF_OUT = BASE / 'Entregables' / 'Fase_III_Finanzas_Porcinas.pdf'
 doc = Document(str(SRC))
 body = doc.element.body
 
+# Iteracion 4 (20-23 nov 2026): sin pedidos, fotos reales y Guia de razas
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import iteracion4
+E4, LINEAS, TOTAL_LINEAS = iteracion4.editar_original(doc, body, BASE)
+iteracion4.montaje(BASE, ['Pruebas/Iteracion4_Fotos_reales/01_hoy.png', 'Pruebas/Iteracion4_Fotos_reales/02_animales.png',
+                          'Pruebas/Iteracion4_Fotos_reales/05_ficha_animal.png'],
+                   ['Hoy', 'Animales', 'Ficha del animal'], 'Entregables/Capturas/Iteracion4/montaje_1.png')
+iteracion4.montaje(BASE, ['Pruebas/Iteracion4_Fotos_reales/04_guia_razas_1.png', 'Pruebas/Iteracion4_Fotos_reales/04_guia_razas_2.png',
+                          'Pruebas/Iteracion4_Fotos_reales/03_dinero.png'],
+                   ['Guía de razas', 'Guía: Minipig', 'Dinero'], 'Entregables/Capturas/Iteracion4/montaje_2.png')
+
 
 def q(tag):
     return qn('w:' + tag)
@@ -378,6 +389,10 @@ STUB = [H_CRONO, H_CRONO.getnext(), H_CRONO.getnext().getnext()]
 IMG_P, CAP_P = STUB[1], STUB[2]
 assert IMG_P.tag == q('p') and IMG_P.findall('.//' + q('drawing'))
 assert CAP_P.find('.//' + q('sectPr')) is not None
+# la imagen del cronograma se sustituye por la version actualizada (23 nov 2026)
+_png_crono = BASE / 'Entregables' / '01_Cronograma_FaseIII.png'
+_blip = IMG_P.find('.//' + qn('a:blip'))
+doc.part.related_parts[_blip.get(qn('r:embed'))]._blob = _png_crono.read_bytes()
 for e in STUB:
     body.remove(e)
 
@@ -394,7 +409,7 @@ FRONT = [
     ('h1', '1. Introducción'),
     ('h2', '1.1 Descripción del proyecto'),
     ('p', 'Este documento reúne los entregables de la Fase III. Ejecución de la materia Desarrollo de proyecto de aplicaciones móviles, correspondiente al Proyecto Integrador de José Guadalupe Rico Moreno, matrícula AL03063503. El proyecto consiste en el diseño, la construcción, la prueba y la integración de Finanzas Porcinas, una aplicación móvil nativa de iOS para el Criadero Fam Rico Moreno, un emprendimiento familiar de crianza de puercos en Aldama, Tamaulipas.'),
-    ('p', 'La aplicación concentra en un solo lugar el control del hato, las tareas diarias de alimentación y limpieza, las compras de insumos, las ventas, las visitas del veterinario y los pedidos que llegan por Facebook y por WhatsApp. Funciona en el iPhone de la titular, en español y sin conexión a internet.'),
+    ('p', 'La aplicación concentra en un solo lugar el control del hato, las tareas diarias de alimentación y limpieza, las compras de insumos, las ventas, las visitas del veterinario y una guía de razas con fotos e información reales. Funciona en el iPhone de la titular, en español y sin conexión a internet.'),
     ('p', 'El documento sigue el orden de la actividad. Primero presenta la introducción y la problemática; después, la Parte 2 (plan de acción con rumbo, sector y cliente, prioridades, acciones y cronograma); en seguida desarrolla las cinco fases de ejecución —análisis de requerimientos, diseño de solución, construcción, pruebas e integración—, documenta la evolución del diseño y cierra con la evidencia del curso de LinkedIn Learning, las conclusiones y los anexos.'),
     ('h2', '1.2 Objetivo'),
     ('p', 'El objetivo de la fase es realizar el plan de acción del proyecto con un modelo de desarrollo ágil, indicar la problemática que resuelve y ejecutar ese plan hasta obtener una aplicación funcional. El plan se administra en una hoja de cálculo que concentra las actividades con su inicio, su fin, sus dependencias, su complejidad, su estado y su avance, de modo que los avances, las interrupciones y los ajustes queden registrados.'),
@@ -402,17 +417,17 @@ FRONT = [
     ('h2', '1.3 Problemática a resolver'),
     # aqui se inserta el parrafo original de la problematica
     ('h2', '1.4 Metodología de desarrollo'),
-    ('p', 'Se aplicó el modelo ágil evolutivo. En lugar de congelar un diseño y construirlo por partes, se construyó una versión funcional completa, se mostró al cliente y se corrigió con sus observaciones; cada iteración volvió a recorrer las cinco fases. Se hicieron tres iteraciones del diseño, documentadas en el capítulo 9.'),
-    ('p', 'El plan de acción se administra en el archivo 01_Cronograma_FaseIII.xlsx, una hoja con las cinco fases, 24 actividades y una fila de seguimiento real por fase. Cada actividad declara su inicio, su fin, su duración, su dependencia, su complejidad, su estado y su avance. Las interrupciones y los ajustes se registran en la misma hoja: si una actividad se adelanta o se pospone, se actualiza su estado y se conserva la fila real.'),
+    ('p', 'Se aplicó el modelo ágil evolutivo. En lugar de congelar un diseño y construirlo por partes, se construyó una versión funcional completa, se mostró al cliente y se corrigió con sus observaciones; cada iteración volvió a recorrer las cinco fases. Se hicieron cuatro iteraciones del diseño (tres por observación del cliente y una de ajuste final del alcance), documentadas en el capítulo 9.'),
+    ('p', 'El plan de acción se administra en el archivo 01_Cronograma_FaseIII.xlsx, una hoja con las cinco fases, 25 actividades y una fila de seguimiento real por fase. Cada actividad declara su inicio, su fin, su duración, su dependencia, su complejidad, su estado y su avance. Las interrupciones y los ajustes se registran en la misma hoja: si una actividad se adelanta o se pospone, se actualiza su estado y se conserva la fila real.'),
     ('p', 'Las herramientas fueron Xcode 26.4, el lenguaje Swift 5, SwiftUI para la interfaz y SwiftData para la persistencia local. Las pruebas se ejecutaron en el simulador de iPhone 17 Pro con iOS 26.4. No se usaron dependencias externas ni servicios en la nube.'),
     ('h2', '1.5 Alcance y criterios de evaluación'),
     ('p', 'La siguiente tabla relaciona cada criterio de la rúbrica con el capítulo donde se cumple y con la evidencia que lo respalda.'),
     ('tbl', [
         ['Criterio de evaluación', 'Puntaje', 'Dónde se cumple'],
-        ['Listado de requerimientos posibles y alcanzables', '5', 'Capítulo 4: 24 requerimientos funcionales, 10 no funcionales y 5 fuera de alcance.'],
+        ['Listado de requerimientos posibles y alcanzables', '5', 'Capítulo 4: 26 requerimientos funcionales (19 implementados, 3 retirados y 4 pendientes), 10 no funcionales y 5 fuera de alcance.'],
         ['Documento de diseño de solución', '10', 'Capítulo 5: arquitectura, modelo de datos, diagrama de navegación, requerimientos de diseño y componentes.'],
-        ['Archivos de programación y archivos de diseño editables', '15', 'Capítulo 6: 14 archivos Swift, 6,057 líneas, proyecto FinanzasPorcinas.xcodeproj.'],
-        ['Prototipos y resultados de cada prueba', '20', 'Capítulo 7: 13 casos de componente y 5 de integración con capturas del simulador.'],
+        ['Archivos de programación y archivos de diseño editables', '15', 'Capítulo 6: 14 archivos Swift, ' + format(TOTAL_LINEAS, ',') + ' líneas, proyecto FinanzasPorcinas.xcodeproj.'],
+        ['Prototipos y resultados de cada prueba', '20', 'Capítulo 7: 12 casos de componente y 4 de integración vigentes (3 más retirados con la sección de pedidos), con capturas del simulador.'],
         ['App funcional', '40', 'Capítulo 8: aplicación integrada, versión 1.0 (build 1).'],
         ['Curso de LinkedIn Learning y evidencia del certificado', '10', 'Capítulo 10: certificado del curso Swift 5: Protocol-Oriented Programming.'],
         ['Total', '100', ''],
@@ -434,7 +449,7 @@ LAST_FRONT = insert_after(IDX_HEAD, NEW)
 # mover el parrafo original de la problematica a 1.3
 h13 = find_par('1.3 Problemática a resolver', 'Heading 2')._p
 h13.addnext(P_PROB)
-P_PROB.addnext(P('La consecuencia es que las decisiones se toman con información incompleta: no se sabe cuánto costó criar a un cerdo, cuánto alimento consumió, qué pedidos están pendientes de entrega ni qué animal conviene vender. La aplicación atiende esa problemática con un registro único, capturado en el momento y en el lugar donde ocurre el trabajo.'))
+P_PROB.addnext(P('La consecuencia es que las decisiones se toman con información incompleta: no se sabe cuánto costó criar a un cerdo, cuánto alimento consumió, qué pedidos están pendientes de entrega ni qué animal conviene vender. La aplicación atiende esa problemática con un registro único, capturado en el momento y en el lugar donde ocurre el trabajo. La gestión de pedidos se retiró de la aplicación el 20 de noviembre de 2026 y queda fuera de su alcance (FA-02).'))
 
 # ---------------------------------------------------------------- 3. Parte 2
 PARTE2 = [
@@ -454,8 +469,8 @@ PARTE2 = [
     ('p', 'El rumbo se organizó en cuatro ejes. La tabla muestra, para cada eje, la acción de posicionamiento y la forma en que la aplicación la sostiene.'),
     ('tbl', [
         ['Eje', 'Acción para promover y posicionar', 'Cómo la sostiene la aplicación'],
-        ['Producto y precio', 'Comunicar el precio por kilogramo sin ambigüedad y sostener los dos precios del criadero: $40 u $80 según el caso.', 'Calcula el total de cada venta y de cada pedido, y muestra el precio elegido. El precio nunca se asigna solo: lo elige la persona.'],
-        ['Confianza y relación', 'Responder por el mismo canal en el que llegó el pedido y dar seguimiento hasta la entrega.', 'Registra el canal (Facebook o WhatsApp), asigna un folio consecutivo y avanza el pedido por sus tres estados.'],
+        ['Producto y precio', 'Comunicar el precio por kilogramo sin ambigüedad y sostener los dos precios del criadero: $40 u $80 según el caso.', 'Calcula el total de cada venta y muestra el precio elegido. El precio nunca se asigna solo: lo elige la persona.'],
+        ['Confianza y relación', 'Responder por el mismo canal en el que llegó el pedido y dar seguimiento hasta la entrega.', 'Guarda el historial de ventas con su fecha, sus kilos y el precio elegido, y ofrece la guía de razas con fotos e información reales. Los pedidos se retiraron de la aplicación el 20 de noviembre de 2026.'],
         ['Orden interno y costos', 'Conocer cuánto cuesta criar a un cerdo y comparar proveedores de alimento antes de comprar.', 'Registra compras con su total, compara el precio por bulto entre proveedores y muestra si una venta deja ganancia.'],
         ['Sanidad y bienestar', 'Mostrar que los animales reciben atención veterinaria y que las visitas quedan registradas.', 'Agenda y registra las visitas del Dr. Rafael de Leija Lara, con la próxima visita y su historial.'],
     ], [2000, 3300, 3770]),
@@ -465,12 +480,12 @@ PARTE2 = [
         ['Elemento', 'Descripción', 'Implicación para la aplicación'],
         ['Sector', 'Porcicultura familiar y comercio local de carne y derivados en Aldama, Tamaulipas.', 'Opera sin internet y en un solo dispositivo, el iPhone de la titular.'],
         ['Oferta', '17 animales de crianza; 12 puercos al año para venta de carne y derivados. Razas Común, Minipig y Cruza.', 'Ficha por animal con raza, peso, destino y notas; el hato completo se ve en una cuadrícula.'],
-        ['Cliente principal', 'Hogares de Aldama y colonias cercanas que piden por Facebook o por grupos de WhatsApp.', 'Cada pedido guarda su canal de origen y el pedido completo se sigue por estado.'],
-        ['Nivel de compra', 'Desde un pedido de pocos kilogramos hasta el cerdo completo (96 kg en el ejemplo registrado). La compra es recurrente y se acuerda por conversación.', 'Totales por kilogramo y por pedido, con el precio calculado a la vista antes de confirmar.'],
+        ['Cliente principal', 'Hogares de Aldama y colonias cercanas que piden por Facebook o por grupos de WhatsApp.', 'La aplicación no maneja los pedidos (se retiraron el 20 de noviembre de 2026): la titular los atiende por Facebook y WhatsApp, fuera de ella.'],
+        ['Nivel de compra', 'Desde un pedido de pocos kilogramos hasta el cerdo completo (96 kg en el ejemplo registrado). La compra es recurrente y se acuerda por conversación.', 'Total por kilogramo en cada venta, con el precio calculado a la vista antes de confirmar.'],
         ['Preferencias', 'Precio claro por kilogramo, carne fresca, entrega acordada y trato directo con la familia.', 'Muestra el precio elegido y el total; el lenguaje es del criadero, no contable.'],
-        ['Lealtad', 'Se sostiene en la relación personal y en los grupos de WhatsApp; se pierde si el pedido se entrega incompleto o tarde.', 'Aviso de pedidos por entregar en la pantalla Hoy y avance del estado hasta Entregado.'],
+        ['Lealtad', 'Se sostiene en la relación personal y en los grupos de WhatsApp; se pierde si el pedido se entrega incompleto o tarde.', 'Historial de ventas con fecha, kilos y precio.'],
     ], [1700, 3600, 3770]),
-    ('p', 'De esta lectura se desprenden dos decisiones de alcance. La primera: la aplicación es de uso interno del criadero, porque quien compra no necesita una cuenta ni una app. La segunda: como la lealtad depende de la entrega, el avance del pedido es un requerimiento de negocio y no una función decorativa.'),
+    ('p', 'De esta lectura se desprenden dos decisiones de alcance. La primera: la aplicación es de uso interno del criadero, porque quien compra no necesita una cuenta ni una app. La segunda: la aplicación no gestiona pedidos; el seguimiento de la entrega se hace fuera de ella, por los mismos canales por los que llegan.'),
     ('h2', '2.3 Clasificación de necesidades por categorías'),
     ('p', 'De la minuta con el cliente se extrajeron las necesidades y se clasificaron en ocho categorías y una más de gestión del proyecto. Cada categoría agrupa necesidades del mismo tipo y se relaciona con los requerimientos que las atienden.'),
     ('tbl', [
@@ -480,7 +495,7 @@ PARTE2 = [
         ['Operación diaria del corral', 'Saber qué toca hoy; marcar alimentación y limpieza; anotar los kilos servidos.', 'RF-01 a RF-07'],
         ['Control del hato', 'Listar, buscar y filtrar; dar de alta; ver la ficha; actualizar el peso; dar de baja.', 'RF-10 a RF-13'],
         ['Dinero y costos', 'Registrar ventas y compras; saber cuánto costó criar y si la venta deja ganancia.', 'RF-14 a RF-17'],
-        ['Pedidos y clientes', 'Registrar pedidos por canal y avanzar su entrega hasta completarla.', 'RF-19, RF-20'],
+        ['Pedidos y clientes (retirada)', 'Registrar pedidos por canal y avanzar su entrega; la sección se retiró de la aplicación el 20 de noviembre de 2026.', 'RF-06, RF-19, RF-20 (retirados)'],
         ['Sanidad y veterinario', 'Agendar visitas, registrar atenciones y tener presente la próxima visita.', 'RF-18, RF-24'],
         ['Uso en campo y accesibilidad', 'Usarse de pie, con sol y con guantes; letra que se lea; navegación sin menús ocultos.', 'RNF-04, RNF-05, RNF-10'],
         ['Gestión del proyecto', 'Saber qué sigue, qué se atrasó y qué cambió durante el desarrollo.', 'Capítulo 3 (cronograma) y capítulo 9 (iteraciones)'],
@@ -491,7 +506,7 @@ PARTE2 = [
         ['Categoría', 'Prior.', 'Compl.', 'Duración estimada', 'Fase'],
         ['Control del hato', 'Alta', 'Alta', '4 a 5 días', 'Construcción'],
         ['Dinero y costos', 'Alta', 'Alta', '4 días', 'Construcción'],
-        ['Pedidos y clientes', 'Alta', 'Media', '2 a 3 días', 'Construcción'],
+        ['Pedidos y clientes (retirada)', 'Alta', 'Media', '2 a 3 días', 'Construcción; retirada el 20 nov'],
         ['Operación diaria del corral', 'Alta', 'Media', '2 días', 'Construcción'],
         ['Diseño e identidad visual', 'Alta', 'Media', '4 días', 'Diseño y construcción'],
         ['Concepto de marca y confianza', 'Alta', 'Baja', '2 días', 'Diseño'],
@@ -501,7 +516,7 @@ PARTE2 = [
     ], [2500, 850, 950, 1700, 3070]),
     ('p', 'Las duraciones son estimaciones de esfuerzo por categoría y pueden traslaparse entre sí; no se suman para obtener la duración del proyecto. La duración del proyecto se toma del cronograma del capítulo 3.'),
     ('h2', '2.5 Listado de acciones'),
-    ('p', 'Cada acción del proyecto tiene un inicio, un fin, una duración, una dependencia y una complejidad. Las tres primeras se ejecutaron antes del cronograma y son el insumo de la Parte 2; las 24 actividades siguientes y la entrega final forman el cronograma de la Fase III y se muestran con las fechas planeadas. Todas las fechas de la tabla son del año 2026.'),
+    ('p', 'Cada acción del proyecto tiene un inicio, un fin, una duración, una dependencia y una complejidad. Las tres primeras se ejecutaron antes del cronograma y son el insumo de la Parte 2; las 25 actividades siguientes y la entrega final forman el cronograma de la Fase III y se muestran con las fechas planeadas. Todas las fechas de la tabla son del año 2026.'),
     ('tbl', [
         ['ID', 'Acción', 'Inicio', 'Fin', 'Días', 'Depende de', 'Comp.'],
         ['P-01', 'Indagación del posicionamiento de la empresa', '24 ago', '30 ago', '7', '—', 'Media'],
@@ -521,12 +536,13 @@ PARTE2 = [
         ['3.2', 'Módulo de animales y veterinario', '10 nov', '12 nov', '3', '3.1', 'Alta'],
         ['3.3', 'Módulo de bitácora de alimentación y limpieza', '12 nov', '13 nov', '2', '3.2', 'Media'],
         ['3.4', 'Módulo de costos, ventas y compras', '13 nov', '16 nov', '4', '3.3', 'Alta'],
-        ['3.5', 'Módulo de pedidos', '16 nov', '17 nov', '2', '3.4', 'Media'],
+        ['3.5', 'Módulo de pedidos (retirado el 20 nov)', '16 nov', '17 nov', '2', '3.4', 'Media'],
         ['3.6', 'Documentación del código y versión', '17 nov', '18 nov', '2', '3.5', 'Baja'],
         ['4.1', 'Pruebas de componente en el simulador', '19 nov', '20 nov', '2', '3.6', 'Media'],
         ['4.2', 'Pruebas de integración entre pestañas', '20 nov', '21 nov', '2', '4.1', 'Media'],
         ['4.3', 'Corrección de defectos detectados', '21 nov', '23 nov', '3', '4.2', 'Media'],
         ['4.4', 'Evidencia: capturas y resultados', '23 nov', '24 nov', '2', '4.3', 'Baja'],
+        ['4.5', 'Ajuste final: sin pedidos y fotos reales', '20 nov', '23 nov', '4', '4.3', 'Media'],
         ['5.1', 'Integración de módulos en una sola app', '25 nov', '26 nov', '2', '4.4', 'Media'],
         ['5.2', 'Validación funcional de extremo a extremo', '26 nov', '27 nov', '2', '5.1', 'Alta'],
         ['5.3', 'Curso LinkedIn Learning y certificado', '27 nov', '28 nov', '2', '5.2', 'Baja'],
@@ -563,9 +579,12 @@ insert_after(LAST_P2, [sect_p] + STUB)
 Paragraph(IMG_P, doc).alignment = WD_ALIGN_PARAGRAPH.CENTER
 for sh in doc.inline_shapes:
     if abs(sh.width.inches - 7.65625) < 0.05:
-        ratio = sh.height / sh.width
-        sh.width = Inches(9.0)
-        sh.height = int(Inches(9.0) * ratio)
+        from PIL import Image as _Img
+        _w, _h = _Img.open(_png_crono).size
+        ratio = _h / _w
+        ancho = min(9.0, 5.25 / ratio)
+        sh.width = Inches(ancho)
+        sh.height = int(Inches(ancho) * ratio)
 
 # 4.1 y 4.2 en la seccion retrato siguiente
 CRONO_EXTRA = [
@@ -576,7 +595,7 @@ CRONO_EXTRA = [
         ['Análisis de requerimientos', '26 oct', '1 nov', '7', '5', 'Listado de requerimientos posibles y alcanzables'],
         ['Diseño de solución', '2 nov', '8 nov', '7', '5', 'Documento de diseño de solución'],
         ['Construcción', '9 nov', '18 nov', '10', '6', 'Archivos de programación y de diseño editables'],
-        ['Pruebas', '19 nov', '24 nov', '6', '4', 'Prototipos y resultados de cada prueba'],
+        ['Pruebas', '19 nov', '24 nov', '6', '5', 'Prototipos y resultados de cada prueba'],
         ['Integración', '25 nov', '29 nov', '5', '4', 'App completa y funcional'],
         ['Entrega', '30 nov', '30 nov', '1', '—', 'Documento integrado de la Fase III'],
     ], [2500, 1300, 1300, 800, 800, 2370]),
@@ -588,6 +607,7 @@ CRONO_EXTRA = [
         ['25 oct', 'El cliente revisa la iteración 1 y responde: “La app no es muy buena.”', 'Se revisa cada pantalla contra su captura y su código, y se prepara una segunda iteración del diseño.'],
         ['26 oct', 'El cliente revisa la iteración 2: “No me termina de gustar nada el diseño: no tiene imágenes de los animales y es cero intuitivo.”', 'Se descarta el diseño y se reconstruye desde cero en cuatro pestañas; se agregan las ilustraciones por raza. El alcance de diseño crece y se compensa con trabajo en paralelo.'],
         ['30 oct', 'La subida de una foto real no se puede probar porque el simulador no tiene fotografías (CP-14).', 'Se documenta como caso no ejecutado y se traslada a pruebas en un iPhone; no bloquea la entrega de la fase.'],
+        ['20 nov', 'Ajuste final del alcance: se quita la sección de pedidos y se agregan fotos reales de las razas y la Guía de razas (iteración 4).', 'Se retiran RF-06, RF-19, RF-20, CP-09, CP-10 y PI-02; se agregan RF-25, RF-26 y CP-15; se documenta en 9.7 y 7.6. Se absorbe en la fase de pruebas sin mover la entrega.'],
     ], [1100, 4000, 3970]),
 ]
 
@@ -617,8 +637,8 @@ RENAME = {
     '5.2 Casos de prueba de componente': '7.2 Casos de prueba de componente',
     '5.3 Pruebas de integración': '7.3 Pruebas de integración',
     '5.4 Defectos encontrados y corregidos': '7.4 Defectos encontrados y corregidos',
-    '5.5 Evidencia de la iteración 3: diseño vigente': '7.5 Evidencia de la iteración 3: diseño vigente',
-    '5.6 Conclusión': '7.6 Conclusión',
+    '5.5 Evidencia de la iteración 3': '7.5 Evidencia de la iteración 3',
+    '5.6 Conclusión': '7.7 Conclusión',
     '6. Evolución del diseño y justificación de los cambios': '9. Evolución del diseño y justificación de los cambios',
     '6.1 Introducción': '9.1 Introducción',
     '6.2 Resumen de las iteraciones': '9.2 Resumen de las iteraciones',
@@ -654,7 +674,7 @@ h51.addnext(P('Esta fase corresponde al análisis de requerimientos: las entrevi
 h6 = find_par('5. Fase II. Diseño de solución', 'Heading 1')._p
 insert_before(h6, build([
     ('h2', '4.5 Entregable de la fase'),
-    ('p', 'El entregable de esta fase es el listado de requerimientos posibles y alcanzables de este capítulo: 24 requerimientos funcionales, 10 no funcionales y 5 fuera de alcance, cada uno con su prioridad, su complejidad y su estado. Se entrega también como documento independiente en 02_Listado_de_Requerimientos.docx.'),
+    ('p', 'El entregable de esta fase es el listado de requerimientos posibles y alcanzables de este capítulo: 26 requerimientos funcionales (19 implementados, 3 retirados el 20 de noviembre de 2026 y 4 pendientes), 10 no funcionales y 5 fuera de alcance, cada uno con su prioridad, su complejidad y su estado. Se entrega también como documento independiente en 02_Listado_de_Requerimientos.docx.'),
 ]))
 
 # 6.7 Entregable
@@ -699,27 +719,27 @@ insert_before(h8, build([
     ('p', 'La tabla siguiente registra el tamaño y la complejidad de cada componente, y los casos de prueba que lo cubren. Esa relación es la que permite estimar el impacto de una actualización futura.'),
     ('tbl', [
         ['Componente', 'Archivo', 'Líneas', 'Compl.', 'Pruebas que lo cubren'],
-        ['Hoy', 'Vistas/VistaHoy.swift', '710', 'Alta', 'CP-01, CP-02'],
-        ['Animales', 'Vistas/VistaAnimales.swift', '819', 'Alta', 'CP-03, CP-04, CP-05, CP-13'],
-        ['Ficha del animal', 'Vistas/VistaFichaAnimal.swift', '769', 'Alta', 'CP-06, CP-14'],
-        ['Dinero', 'Vistas/VistaDinero.swift', '743', 'Alta', 'CP-07, CP-08'],
-        ['Compras', 'Vistas/VistaCompras.swift', '705', 'Media', 'CP-11'],
-        ['Veterinario', 'Vistas/VistaVeterinario.swift', '596', 'Media', 'CP-12'],
-        ['Pedidos', 'Vistas/VistaPedidos.swift', '846', 'Alta', 'CP-09, CP-10'],
-        ['Navegación', 'VistaPrincipal.swift', '78', 'Baja', 'PI-01 a PI-05'],
-        ['Datos, tema y componentes', 'Modelos, DatosIniciales, Tema y Componentes', '618', 'Media', '—'],
-        ['Ilustraciones', 'AvatarCerdo.swift', '147', 'Media', 'CP-13'],
+        ['Hoy', 'Vistas/VistaHoy.swift', str(LINEAS['Vistas/VistaHoy.swift']), 'Alta', 'CP-01, CP-02'],
+        ['Animales', 'Vistas/VistaAnimales.swift', str(LINEAS['Vistas/VistaAnimales.swift']), 'Alta', 'CP-03, CP-04, CP-05, CP-13, CP-15'],
+        ['Ficha del animal', 'Vistas/VistaFichaAnimal.swift', str(LINEAS['Vistas/VistaFichaAnimal.swift']), 'Alta', 'CP-06, CP-14, CP-15'],
+        ['Dinero', 'Vistas/VistaDinero.swift', str(LINEAS['Vistas/VistaDinero.swift']), 'Alta', 'CP-07, CP-08'],
+        ['Compras', 'Vistas/VistaCompras.swift', str(LINEAS['Vistas/VistaCompras.swift']), 'Media', 'CP-11'],
+        ['Veterinario', 'Vistas/VistaVeterinario.swift', str(LINEAS['Vistas/VistaVeterinario.swift']), 'Media', 'CP-12'],
+        ['Guía de razas', 'GuiaRazas.swift', str(LINEAS['GuiaRazas.swift']), 'Media', 'CP-15'],
+        ['Navegación', 'VistaPrincipal.swift', str(LINEAS['VistaPrincipal.swift']), 'Baja', 'PI-01, PI-03 a PI-05'],
+        ['Datos, tema y componentes', 'Modelos, DatosIniciales, Tema y Componentes', str(sum(LINEAS[k] for k in ('Modelos.swift', 'DatosIniciales.swift', 'Tema.swift', 'Componentes.swift'))), 'Media', '—'],
+        ['Imagen del cerdo', 'AvatarCerdo.swift', str(LINEAS['AvatarCerdo.swift']), 'Media', 'CP-13, CP-15'],
     ], [2000, 2900, 900, 1000, 2270]),
     ('p', 'La versión quedó registrada como 1.0 (build 1). El número de compilación se incrementa con cada entrega y el nombre de la versión cambia solo cuando se agrega un requerimiento nuevo, de modo que el historial de cambios se pueda reconstruir.'),
     ('h2', '6.4 Entregable de la fase'),
-    ('p', 'El entregable de esta fase son los archivos de programación (14 archivos Swift, 6,057 líneas) y los archivos de diseño editables: el tema, los componentes y las ilustraciones en código, más las capturas de las tres iteraciones. El proyecto completo, con el esquema FinanzasPorcinas, está en FinanzasPorcinas.xcodeproj.'),
+    ('p', 'El entregable de esta fase son los archivos de programación (14 archivos Swift, ' + format(TOTAL_LINEAS, ',') + ' líneas) y los archivos de diseño editables: el tema, los componentes, las ilustraciones en código y las fotos reales de las razas, más las capturas de las cuatro iteraciones. El proyecto completo, con el esquema FinanzasPorcinas, está en FinanzasPorcinas.xcodeproj.'),
 ]))
 
 # 8.7 Entregable
 h9 = find_par('9. Evolución del diseño', 'Heading 1')._p
 insert_before(h9, build([
-    ('h2', '7.7 Entregable de la fase'),
-    ('p', 'El entregable de esta fase son los prototipos funcionales y el resultado de cada prueba: 13 casos de componente y 5 de integración ejecutados en el simulador, con sus capturas y sus defectos corregidos. Se entregan también como 05_Prototipos_y_Pruebas.docx y 04_Registro_Prueba_CP-13.docx.'),
+    ('h2', '7.8 Entregable de la fase'),
+    ('p', 'El entregable de esta fase son los prototipos funcionales y el resultado de cada prueba: 12 casos de componente y 4 de integración vigentes, ejecutados en el simulador, con sus capturas y sus defectos corregidos; CP-09, CP-10 y PI-02 se retiraron con la sección de pedidos. Se entregan también como 05_Prototipos_y_Pruebas.docx y 04_Registro_Prueba_CP-13.docx.'),
 ]))
 
 # 10.1 / 10.2
@@ -730,7 +750,7 @@ tbl_app = p_app.getnext()
 assert tbl_app.tag == q('tbl')
 insert_after(tbl_app, build([
     ('h2', '8.2 Entregable de la fase'),
-    ('p', 'El entregable de esta fase es la App completa y funcional: los seis módulos integrados en una sola aplicación, con los componentes de cada pantalla conectados a los datos y al servicio local, y con la identidad gráfica del criadero.'),
+    ('p', 'El entregable de esta fase es la App completa y funcional: los cinco módulos vigentes (animales, alimentación y limpieza, compras, costos y ventas, y veterinario) y la Guía de razas integrados en una sola aplicación, con los componentes de cada pantalla conectados a los datos y al servicio local, y con la identidad gráfica del criadero.'),
 ]))
 
 # ---- figuras con justificacion por fase ----
@@ -748,35 +768,45 @@ insert_before(find_par('5.5 Requerimientos de diseño', 'Heading 2')._p, build([
     ('p', 'Justificación: el diagrama resume las transiciones de la sección anterior e indica, en cada caso, la entrada y la salida; sirve de plano para construir cada pantalla en la Fase III.'),
 ]))
 insert_before(find_par('5.7 Entregable de la fase', 'Heading 2')._p, build([
-    ('p', 'El diseño se iteró tres veces por indicación del cliente; la justificación de cada cambio y las capturas de las iteraciones se documentan en el capítulo 9, una vez terminadas las cinco fases.'),
+    ('p', 'El diseño se iteró cuatro veces: tres por indicación del cliente y una de ajuste final del alcance; la justificación de cada cambio y las capturas de las iteraciones se documentan en el capítulo 9, una vez terminadas las cinco fases.'),
 ]))
 
 # Fase III: codigo publicado en GitHub
 insert_before(find_par('6.4 Entregable de la fase', 'Heading 2')._p, build([
     ('sub', 'Código publicado en GitHub'),
-    ('p', 'El proyecto está versionado y publicado en https://github.com/RMJ4G27020/finanzas-porcinas. Las siguientes capturas, tomadas del repositorio, muestran el código real que se entrega.'),
+    ('p', 'El proyecto está versionado y publicado en https://github.com/RMJ4G27020/finanzas-porcinas. Las siguientes capturas se tomaron del repositorio el 30 de octubre de 2026 y muestran el código de la iteración 3.'),
     ('img', 'Entregables/Capturas/GitHub/gh_repo.png', 5.6),
     ('cap', 'Figura 0. Repositorio finanzas-porcinas en GitHub.'),
     ('p', 'Justificación: demuestra que el código está versionado y disponible para el cliente y la docente, con la estructura de 14 archivos Swift descrita en la sección 6.1.'),
     ('img', 'Entregables/Capturas/GitHub/gh_modelos.png', 4.6),
     ('cap', 'Figura 0. Modelos.swift en GitHub.'),
-    ('p', 'Justificación: evidencia el modelo de datos (seis @Model) y las enumeraciones del dominio que implementan los requerimientos RF-08 a RF-17 y RNF-01.'),
+    ('p', 'Justificación: evidencia el modelo de datos de la iteración 3 (seis @Model) y las enumeraciones del dominio que implementan los requerimientos RF-08 a RF-17 y RNF-01.'),
     ('img', 'Entregables/Capturas/GitHub/gh_principal.png', 4.6),
     ('cap', 'Figura 0. VistaPrincipal.swift en GitHub.'),
-    ('p', 'Justificación: muestra la navegación por pestañas (Hoy, Animales, Dinero y Pedidos) que materializa el requerimiento RNF-06.'),
+    ('p', 'Justificación: muestra la navegación por pestañas de la iteración 3 (Hoy, Animales, Dinero y Pedidos) que materializa el requerimiento RNF-06; en la iteración 4 son tres pestañas.'),
     ('img', 'Entregables/Capturas/GitHub/gh_hoy.png', 4.6),
     ('cap', 'Figura 0. VistaHoy.swift en GitHub.'),
     ('p', 'Justificación: evidencia la pantalla Hoy, que atiende los requerimientos RF-01 a RF-07 (saludo, tareas del día, atajos y mis cerdos).'),
 ]))
 
 # Fase IV: justificacion de las capturas del simulador
-insert_before(find_par('7.6 Conclusión', 'Heading 2')._p, build([
+insert_before(find_par('7.7 Conclusión', 'Heading 2')._p, build([
     ('p', 'Justificación de las imágenes: estas capturas demuestran el cumplimiento de los casos CP-01 a CP-13 en el simulador de iPhone 17 Pro con iOS 26.4; cada una corresponde a una pantalla o a un flujo probado y aprobado en la sección 7.2.'),
+]))
+insert_before(find_par('7.7 Conclusión', 'Heading 2')._p, build([
+    ('h2', '7.6 Evidencia de la iteración 4'),
+    ('p', 'Las capturas de la iteración 4 se tomaron en el simulador de iPhone 17 Pro con iOS 26.4 el 20 de noviembre de 2026, con los datos iniciales de ejemplo: 20 animales, 3 tareas del día, 3 compras y 4 visitas del veterinario. Muestran las tres pestañas vigentes, la foto real de cada raza y la Guía de razas.'),
+    ('img', 'Entregables/Capturas/Iteracion4/montaje_1.png', 6.2),
+    ('cap', 'Figura 0. Capturas de la iteración 4: Hoy, Animales y ficha de un cerdo.'),
+    ('p', 'Justificación: demuestran el caso CP-15 y el cumplimiento de RF-25. Hoy ya no tiene el atajo ni la tarjeta de pedidos y ofrece el atajo Guía de razas; Animales y la ficha muestran la foto real de la raza, y la ficha la rotula como foto de ejemplo.'),
+    ('img', 'Entregables/Capturas/Iteracion4/montaje_2.png', 6.2),
+    ('cap', 'Figura 0. Capturas de la iteración 4: Guía de razas y Dinero.'),
+    ('p', 'Justificación: demuestran el caso CP-15 y el cumplimiento de RF-26. La guía muestra cada raza con su foto, sus datos y el crédito de la foto; Dinero conserva la venta en tres pasos y su historial. Además se grabó un video de demostración del recorrido en el simulador el 23 de noviembre de 2026 (Video_Demo_Finanzas_Porcinas.mp4).'),
 ]))
 
 # Fase V: captura de la app integrada
 insert_after(p_app, build([
-    ('img', 'Pruebas/Iteracion3_Rediseno/01_hoy.png', 3.2),
+    ('img', 'Pruebas/Iteracion4_Fotos_reales/01_hoy.png', 3.2),
     ('cap', 'Figura 0. Pantalla Hoy de la aplicación integrada.'),
     ('p', 'Justificación: evidencia la App completa y funcional (entregable de la Fase V): una sola aplicación con la identidad gráfica del criadero, ejecutada en el simulador de iPhone.'),
 ]))
@@ -814,6 +844,26 @@ h11 = find_par('10. Certificado de LinkedIn Learning', 'Heading 1')._p
 for e in bloque:
     h11.addprevious(e)
 
+# 9.7 Iteracion 4
+insert_before(h11, build([
+    ('h2', '9.7 Iteración 4: sin pedidos y con fotos reales'),
+    ('p', 'La iteración 4 es el ajuste final antes de la entrega, hecho el 20 de noviembre de 2026. No reconstruyó el diseño de la iteración 3: quitó una sección y reforzó la respuesta a la observación principal del cliente, que los animales se vean en imágenes. Se hizo con los mismos pasos de las fases anteriores: se cambió el código, se compiló, se probó en el simulador y se tomaron nuevas capturas.'),
+    ('sub', 'Qué cambió'),
+    ('b', 'Se quitó la sección Pedidos: la pestaña, el atajo Nuevo pedido, la tarjeta de pedidos por entregar de Hoy, los modelos Pedido, Canal y EstadoPedido, los datos de ejemplo y el archivo VistaPedidos.swift. La aplicación quedó con tres pestañas: Hoy, Animales y Dinero.'),
+    ('b', 'Se agregaron fotos reales: cada raza usa una foto de Wikimedia Commons con licencia libre (CC BY-SA) en lugar de la ilustración dibujada. Si el animal tiene foto propia, esa tiene prioridad. La ficha indica que la foto es de ejemplo.'),
+    ('b', 'Se agregó la Guía de razas: datos resumidos de Wikipedia, la foto de cada raza y el crédito de cada foto (autor, licencia y enlace). Se abre desde un atajo de Hoy, un botón de Animales y una tarjeta de la ficha.'),
+    ('tbl', [
+        ['Elemento', 'Iteración 3', 'Iteración 4'],
+        ['Pestañas', 'Hoy, Animales, Dinero y Pedidos', 'Hoy, Animales y Dinero'],
+        ['Imagen del cerdo', 'Ilustración dibujada por raza', 'Foto real de la raza o foto propia'],
+        ['Información de razas', 'Ninguna', 'Guía de razas con fotos, datos y créditos'],
+        ['Atajos de Hoy', 'Agregar cerdo, Vender y Nuevo pedido', 'Agregar cerdo, Vender y Guía de razas'],
+        ['Modelos SwiftData', 'Seis', 'Cinco (sin Pedido)'],
+        ['Archivos Swift', '14 archivos, 6,057 líneas', '14 archivos, ' + format(TOTAL_LINEAS, ',') + ' líneas'],
+    ], [2200, 3400, 3470]),
+    ('p', 'No cambió la información ni las reglas del negocio: se conservaron los modelos Animal, Tarea, Compra, Venta y VisitaVeterinario, los datos de la empresa, los cálculos y la regla de que la persona elige el precio de $40 u $80 por kilogramo. Los requerimientos y los casos de prueba de pedidos (RF-06, RF-19, RF-20, CP-09, CP-10 y PI-02) no se borraron: quedaron marcados como retirados para conservar la trazabilidad de las iteraciones anteriores. La evidencia de esta iteración está en la sección 7.6.'),
+]))
+
 # 11: fecha del certificado
 h11 = find_par('10. Certificado de LinkedIn Learning', 'Heading 1')._p
 p_curso = h11.getnext()
@@ -825,10 +875,10 @@ pb = h_anexo.getprevious()
 assert pb is not None and pb.findall('.//' + q('br')), 'no se encontro el salto de pagina'
 CIERRE = [
     ('h1', '11. Conclusiones y reflexión'),
-    ('p', 'La Fase III se cumplió. La aplicación Finanzas Porcinas está construida, probada e integrada: reúne el control del hato, las tareas del día, las compras, las ventas, las visitas del veterinario y los pedidos, en cuatro pestañas que responden a las cuatro preguntas del criadero. Son 14 archivos Swift y 6,057 líneas, con 13 casos de prueba de componente y 5 de integración aprobados, y el certificado del curso de LinkedIn Learning está anexado.'),
+    ('p', 'La Fase III se cumplió. La aplicación Finanzas Porcinas está construida, probada e integrada: reúne el control del hato, las tareas del día, las compras, las ventas, las visitas del veterinario y una guía de razas con fotos e información reales, en tres pestañas que responden a las tres preguntas del criadero. Son 14 archivos Swift y ' + format(TOTAL_LINEAS, ',') + ' líneas, con 12 casos de prueba de componente y 4 de integración vigentes y aprobados, y el certificado del curso de LinkedIn Learning está anexado.'),
     ('p', 'Los siete entregables de la actividad están cubiertos: el cronograma (capítulo 3), el listado de requerimientos (capítulo 4), el documento de diseño (capítulo 5), los archivos de programación y de diseño (capítulo 6), los prototipos y resultados de prueba (capítulo 7), la app funcional (capítulo 8) y la evidencia del certificado (capítulo 10). El plan de acción de la Parte 2 se desarrolló en el capítulo 2 y su ejecución se documenta fase por fase.'),
-    ('p', 'Quedan pendientes que no se ocultaron: la subida de una foto real (CP-14) porque el simulador no tiene fotografías, el escalado de toda la letra con el tamaño de texto del sistema (RNF-10), el historial de pesos por animal (RF-21), la ración y la dieta por propósito (RF-22), la conversión del alimento y el costo real por kilogramo (RF-23) y el calendario de sanidad por animal (RF-24). También quedó registrada, sin causa identificada, la observación de que en dos ocasiones un primer toque en un botón no produjo efecto y funcionó al repetirlo.'),
-    ('p', 'La reflexión final es que el modelo ágil evolutivo no fue una formalidad: las tres iteraciones cambiaron la aplicación de fondo, y el cliente fue quien decidió qué era intuitivo y qué no. La app no se parece al primer diseño y eso es un resultado, no un fracaso. El siguiente paso es probarla en un iPhone real, en el corral y con guantes, que es el escenario para el que se diseñó.'),
+    ('p', 'Quedan pendientes que no se ocultaron: la subida de una foto real (CP-14) porque el simulador no tiene fotografías, el escalado de toda la letra con el tamaño de texto del sistema (RNF-10), el historial de pesos por animal (RF-21), la ración y la dieta por propósito (RF-22), la conversión del alimento y el costo real por kilogramo (RF-23) y el calendario de sanidad por animal (RF-24). También quedó registrada, sin causa identificada, la observación de que en varias ocasiones un primer toque en un botón no produjo efecto y funcionó al repetirlo. El 20 de noviembre de 2026 se retiró la sección de pedidos (RF-06, RF-19 y RF-20) y se agregaron la foto real por raza y la Guía de razas (RF-25 y RF-26).'),
+    ('p', 'La reflexión final es que el modelo ágil evolutivo no fue una formalidad: las tres primeras iteraciones cambiaron la aplicación de fondo, y el cliente fue quien decidió qué era intuitivo y qué no; la cuarta ajustó el alcance antes de la entrega. La app no se parece al primer diseño y eso es un resultado, no un fracaso. El siguiente paso es probarla en un iPhone real, en el corral y con guantes, que es el escenario para el que se diseñó.'),
     ('h1', 'Referencias'),
     ('p_left', 'Apple Inc. (s. f.). SwiftUI. https://developer.apple.com/documentation/swiftui'),
     ('p_left', 'Apple Inc. (s. f.). SwiftData. https://developer.apple.com/documentation/swiftdata'),
@@ -845,14 +895,18 @@ ANEXOS = build([
     ('img', 'Entregables/Capturas/Anexos/AnexoB_Carta_Firmas.png', 6.0),
     ('cap', 'Carta de conformidad y firmas (Parte 2).'),
     ('h1', 'Anexo C. Formato de pruebas — Desarrollo de App en Swift'),
-    ('p', 'Formato usado para registrar cada caso de prueba (secciones 1 a 11). Se anexa la plantilla en blanco y, como ejemplo resuelto, el registro de la prueba de componente CP-13.'),
+    ('p', 'Formato usado para registrar cada caso de prueba (secciones 1 a 11). Se anexa la plantilla en blanco y, como ejemplos resueltos, los registros de la prueba de componente CP-13 (iteración 3) y de la CP-15 (iteración 4).'),
     ('img', 'Entregables/Capturas/Anexos/AnexoC_Formato_Pruebas_p1.png', 6.0),
     ('img', 'Entregables/Capturas/Anexos/AnexoC_Formato_Pruebas_p2.png', 6.0),
     ('cap', 'Formato de pruebas (plantilla), páginas 1 y 2.'),
     ('img', 'Entregables/Capturas/Anexos/AnexoC_CP13_p1.png', 6.0),
     ('img', 'Entregables/Capturas/Anexos/AnexoC_CP13_p2.png', 6.0),
     ('img', 'Entregables/Capturas/Anexos/AnexoC_CP13_p3.png', 6.0),
-    ('cap', 'Registro de la prueba CP-13 (ejemplo resuelto), páginas 1 a 3.'),
+    ('cap', 'Registro de la prueba CP-13 (iteración 3), páginas 1 a 3.'),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_CP15_p1.png', 6.0),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_CP15_p2.png', 6.0),
+    ('img', 'Entregables/Capturas/Anexos/AnexoC_CP15_p3.png', 6.0),
+    ('cap', 'Registro de la prueba CP-15 (iteración 4), páginas 1 a 3.'),
 ])
 final_sect = list(body.iterchildren())[-1]
 assert final_sect.tag == q('sectPr')
@@ -943,7 +997,7 @@ for txt, lvl in entries:
 toc_elements[-1].find(q('pPr')).append(SECT)
 insert_after(IDX_HEAD, toc_elements)
 
-CHAPTERS = ('2. ', '4. ', '5. ', '6. ', '7. ', '8. ', '9. ', '11. ')
+CHAPTERS = ('2. ', '4. ', '5. ', '6. ', '7. ', '8. ', '9. ', '10. ', '11. ')
 # quitar parrafos vacios que quedaron antes de un capitulo (provocan paginas en blanco)
 for el in list(body.iterchildren()):
     if el.tag == q('p'):

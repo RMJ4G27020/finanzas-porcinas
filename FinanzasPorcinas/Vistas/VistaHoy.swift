@@ -11,11 +11,11 @@ struct VistaHoy: View {
 
     @Query(sort: \Tarea.fecha, order: .reverse) private var tareas: [Tarea]
     @Query(sort: \Animal.arete) private var animales: [Animal]
-    @Query(sort: \Pedido.folio, order: .reverse) private var pedidos: [Pedido]
 
     @State private var tareaConKilos: Tarea?
     @State private var avisoPendiente: String?
     @State private var aviso: HoyAviso?
+    @State private var mostrandoGuia = false
 
     private let margen: CGFloat = 20
 
@@ -31,10 +31,6 @@ struct VistaHoy: View {
 
     private var animalesDeCrianza: [Animal] {
         animales.filter { $0.destino == .crianza }
-    }
-
-    private var pedidosPorEntregar: [Pedido] {
-        pedidos.filter { $0.estado == .nuevo || $0.estado == .porEntregar }
     }
 
     private var saludo: String {
@@ -56,7 +52,6 @@ struct VistaHoy: View {
                     seccionTareas
                     seccionAtajos
                     seccionCerdos
-                    tarjetaPedidos
                     botonVeterinario
                     enlaceDiasAnteriores
                 }
@@ -66,6 +61,7 @@ struct VistaHoy: View {
             .background { Tema.fondo.ignoresSafeArea() }
             .toolbar(.hidden, for: .navigationBar)
             .overlay(alignment: .bottom) { bannerDeAviso }
+            .navigationDestination(isPresented: $mostrandoGuia) { VistaGuiaRazas() }
         }
         .onAppear { prepararTareasDeHoy() }
         .onChange(of: faseEscena) { _, nueva in
@@ -153,9 +149,8 @@ struct VistaHoy: View {
                 AccionRapida(icono: "banknote.fill", titulo: "Vender") {
                     seleccion = .dinero
                 }
-                AccionRapida(icono: "bag.fill", titulo: "Nuevo pedido", color: Tema.terracota) {
-                    navegacion.abrirNuevoPedido = true
-                    seleccion = .pedidos
+                AccionRapida(icono: "book.fill", titulo: "Guía de razas", color: Tema.terracota) {
+                    mostrandoGuia = true
                 }
             }
         }
@@ -221,45 +216,6 @@ struct VistaHoy: View {
                 .contentMargins(.horizontal, margen, for: .scrollContent)
             }
         }
-    }
-
-    // MARK: 5. Pedidos por entregar
-
-    @ViewBuilder
-    private var tarjetaPedidos: some View {
-        if !pedidosPorEntregar.isEmpty {
-            Button {
-                seleccion = .pedidos
-            } label: {
-                Tarjeta {
-                    HStack(spacing: 16) {
-                        Image(systemName: "bag")
-                            .font(.system(size: 22, weight: .semibold))
-                            .foregroundStyle(Tema.pendienteTexto)
-                            .frame(width: 48, height: 48)
-                            .background(Circle().fill(Tema.pendienteFondo))
-                            .accessibilityHidden(true)
-                        Text(textoPedidos)
-                            .font(.system(size: 17, weight: .bold))
-                            .foregroundStyle(Tema.tinta)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 17, weight: .semibold))
-                            .foregroundStyle(Tema.secundario)
-                            .accessibilityHidden(true)
-                    }
-                }
-            }
-            .buttonStyle(.plain)
-            .padding(.horizontal, margen)
-            .accessibilityLabel(textoPedidos)
-            .accessibilityHint("Abre la pantalla de pedidos")
-        }
-    }
-
-    private var textoPedidos: String {
-        let n = pedidosPorEntregar.count
-        return n == 1 ? "1 pedido por entregar" : "\(n) pedidos por entregar"
     }
 
     // MARK: 6. Veterinario
@@ -706,5 +662,5 @@ private struct HoyVistaPrevia: View {
 
 #Preview {
     HoyVistaPrevia()
-        .modelContainer(for: [Animal.self, Tarea.self, Compra.self, Venta.self, VisitaVeterinario.self, Pedido.self], inMemory: true)
+        .modelContainer(for: [Animal.self, Tarea.self, Compra.self, Venta.self, VisitaVeterinario.self], inMemory: true)
 }
