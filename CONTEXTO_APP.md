@@ -84,7 +84,7 @@ Reglas de código: `@Query` solo ordena por propiedades almacenadas (filtrar en 
 - **Encuesta de satisfacción:** índice 5.0 de 5 (8 afirmaciones, todas en 5), comunicado por Virginia a José y reportado por él el 23/11/2026; sin comentarios textuales de ella. Ya está en la presentación ejecutiva y en el documento de lecciones. No agregar justificaciones que ella no dijo.
 - (Resuelto) Los 4 certificados de LinkedIn Learning existen: Swift 5 Essential Training (fase 1), Swift: Delegations and Data Sources (1/9/2026, está en el reporte de la fase 2), Protocol-Oriented Programming (25/10/2026) y, de la fase 4, *Complete Guide to SwiftUI*, LinkedIn Learning, 23/11/2026, 10 h 57 min (`Entregables/Certificado_Complete_Guide_to_SwiftUI.pdf`). Ya está en la presentación completa y en el documento de lecciones.
 - Probar la subida de foto propia en un iPhone real (CP-14).
-- GitHub (`RMJ4G27020/finanzas-porcinas`) sigue en la iteración 3; subir la 4 requiere permiso de José.
+- GitHub (`RMJ4G27020/finanzas-porcinas`) ya tiene la iteración 4 (commits 9b0379a y bf5b764, 23/11/2026). Falta cambiar la descripción del repo, que aún menciona pedidos.
 
 ## Cómo trabajar con José
 - Ser **literal** con lo que pide el enunciado; no agregar ni asumir. Si falta un dato, **una sola tanda de preguntas**.
