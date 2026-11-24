@@ -275,9 +275,10 @@ s = nueva("CONTENIDO", "Fase 3");
 s.addText("Fase 3 · Evidencias del diseño y el código", { placeholder: "title" });
 evid(s, [
   { n: "nav", t: "Diagrama de navegación de la app" },
-  { n: "gh", t: "Repositorio del proyecto en GitHub (versión de la iteración 3)" },
+  { n: "gh4", t: "Repositorio en GitHub con la iteración 4 publicada (github.com/RMJ4G27020/finanzas-porcinas)" },
+  { n: "commit", t: "Commit de la iteración 4: sin pedidos, fotos reales y Guía de razas (118 archivos)" },
 ]);
-s.addNotes("Evidencias del diseño y el código: el diagrama de navegación de la aplicación y el repositorio del proyecto en GitHub, que muestra el código versionado. La captura del repositorio es de la iteración 3; el código de la iteración 4 está en la carpeta del proyecto.");
+s.addNotes("Evidencias del diseño y el código: el diagrama de navegación de la aplicación, el repositorio del proyecto en GitHub con la iteración 4 ya publicada, y el commit de esa iteración, que quita la sección de pedidos y agrega las fotos reales y la guía de razas, con ciento dieciocho archivos modificados.");
 
 // ---------- 9. Fase 3 construcción y pruebas ----------
 s = nueva("CONTENIDO", "Fase 3");
@@ -404,7 +405,7 @@ s.addText("Fase 4 · Entregables cumplidos de las cuatro fases", { placeholder: 
 const ent = [
   ["Fase 1", ["Portafolio de 13 evidencias", "Reflexión de cuatro preguntas", "App Lista de tareas", "Certificado Swift 5 Essential Training"]],
   ["Fase 2", ["Reporte de selección de la empresa", "Carta de manifestación de interés", "Minuta de acuerdo", "Solicitud a la profesora", "Certificado Delegations and Data Sources"]],
-  ["Fase 3", ["Cronograma y requerimientos", "Diseño y código", "Pruebas y registros CP-13 y CP-15", "App funcional", "Certificado Protocol-Oriented Programming"]],
+  ["Fase 3", ["Cronograma y requerimientos", "Diseño y código en GitHub", "Pruebas y registros CP-13 y CP-15", "App funcional", "Certificado Protocol-Oriented Programming"]],
   ["Fase 4", ["Presentación ejecutiva", "Video de demostración", "Encuesta de satisfacción", "Hallazgos y lecciones aprendidas", "Certificado Complete Guide to SwiftUI"]],
 ];
 ent.forEach((e, i) => {
